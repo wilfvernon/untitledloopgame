@@ -10,13 +10,15 @@ https://github.com/mudcube/MIDI.js thank u 4 playing said sounds
 ## MVP
 [x] get midi.js working -> use live server pls
 
-[ ] 4 samples / 2 instruments
+[x] 4 samples / 2 instruments
 
-[ ] midi loop over fixed time seconds
+[x] midi loop over fixed time seconds
 
-[ ] keyboard interaction
+[ ] keyboard interaction => assign focus to certain window for different instruments
 
-[ ] save loops / name loops / open loops / løøps brüdder
+[ ] save loops / name loops / open loops / løøps brüdder => focus on backend for that
+
+[ ] looper visualization
 
 ## Stretch
 [ ] tempo - time/control (all things counting)
@@ -27,16 +29,16 @@ https://github.com/mudcube/MIDI.js thank u 4 playing said sounds
 
 [ ] CSS
 
+[ ] material design for UX/UI?
+
 ## Super Stretch
 [ ] midi keyboard functionality.
 
-
-Loop => [ [{notedata},{notedata}] * (BARS * RESOLUTION)]
-
-Define a loop by the amount of arrays in the loop
-
-```js
-
-noteOn(delay)
-noteOff(delay+end)
-```
+## TODO TOMORROW
+[ ] check backend implementation
+[ ] set default values for POST request
+[ ] create POST request form
+[ ] create GET request for Loops
+[ ] display GET/:ID request for Loop
+[ ] connect PATCH request to backend
+[ ] css for loop selection (ex: hover / active)
