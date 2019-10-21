@@ -36,9 +36,15 @@ https://github.com/mudcube/MIDI.js thank u 4 playing said sounds
 
 ## TODO TOMORROW
 [ ] check backend implementation
+
 [ ] set default values for POST request
+
 [ ] create POST request form
+
 [ ] create GET request for Loops
+
 [ ] display GET/:ID request for Loop
+
 [ ] connect PATCH request to backend
+
 [ ] css for loop selection (ex: hover / active)
