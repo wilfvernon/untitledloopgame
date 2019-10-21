@@ -23,7 +23,7 @@ https://github.com/mudcube/MIDI.js thank u 4 playing said sounds
 
 [ ] key/sample duration
 
-[ ] 4 instruments
+[ ] up to 16 instruments (use flexbox for the css)
 
 [ ] CSS
 

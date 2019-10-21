@@ -43,7 +43,13 @@
     ></script>
     <title>Document</title>
     <link rel="stylesheet" href="index.css" />
-    <script src="index.js" defer></script>
+
+    <!-- Load midi player -->
+    <script src="loadMIDIPlayer.js" defer></script>
+    <!-- Load scripts to render notes -->
+    <script src="notes.js" defer></script>
+    <!-- Load script to create looper -->
+    <script src="looper.js" defer></script>
   </head>
   <body>
     <div id="wrapper">
@@ -55,7 +61,10 @@
       </ul>
 
       <div id="sidebar">sidebar</div>
-      <div id="looper">looper</div>
+      <div id="looper">
+        <div id="cursor"></div>
+      </div>
+
       <div id="controls">controls</div>
     </div>
   </body>
