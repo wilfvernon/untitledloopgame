@@ -8,7 +8,7 @@ function createNote(cID, noteKey, velocity, volume) {
 }
 
 function saveNote(note) {
-  notes[beatIndex] = note;
+  loop.notes[beatIndex] = note;
 }
 
 function playNote(note) {
