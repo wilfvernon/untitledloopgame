@@ -1,7 +1,7 @@
 const notes = [];
 
 const beatsPerBar = 128;
-const bars = 1;
+const bars = 4;
 const BPM = 90;
 
 const beatsPerTempo = 60000 / BPM / beatsPerBar;

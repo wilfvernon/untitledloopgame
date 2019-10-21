@@ -1,10 +1,5 @@
 window.onload = function() {
-  const instrumentsName = [
-    "fretless_bass",
-    "accordion",
-    "acoustic_guitar_nylon",
-    "rock_organ"
-  ];
+  const instrumentsName = ["ocarina", "accordion", "tubular_bells", "timpani"];
 
   MIDI.loadPlugin({
     soundfontUrl: "fatboy/",
