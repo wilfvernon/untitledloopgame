@@ -2,11 +2,61 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <!-- polyfill -->
+    <script src="MIDI.js/inc/shim/Base64.js" type="text/javascript"></script>
+    <script
+      src="MIDI.js/inc/shim/Base64binary.js"
+      type="text/javascript"
+    ></script>
+    <script
+      src="MIDI.js/inc/shim/WebAudioAPI.js"
+      type="text/javascript"
+    ></script>
+    <!-- midi.js package -->
+    <script
+      src="MIDI.js/js/midi/audioDetect.js"
+      type="text/javascript"
+    ></script>
+    <script src="MIDI.js/js/midi/gm.js" type="text/javascript"></script>
+    <script src="MIDI.js/js/midi/loader.js" type="text/javascript"></script>
+    <script
+      src="MIDI.js/js/midi/plugin.audiotag.js"
+      type="text/javascript"
+    ></script>
+    <script
+      src="MIDI.js/js/midi/plugin.webaudio.js"
+      type="text/javascript"
+    ></script>
+    <script
+      src="MIDI.js/js/midi/plugin.webmidi.js"
+      type="text/javascript"
+    ></script>
+    <!-- utils -->
+    <script
+      src="MIDI.js/js/util/dom_request_xhr.js"
+      type="text/javascript"
+    ></script>
+    <script
+      src="MIDI.js/js/util/dom_request_script.js"
+      type="text/javascript"
+    ></script>
     <title>Document</title>
     <link rel="stylesheet" href="index.css" />
     <script src="index.js" defer></script>
   </head>
   <body>
-    hi
+    <div id="wrapper">
+      <ul id="instruments">
+        <li id="guitar">guitar</li>
+        <li id="piano">piano</li>
+        <li id="drums">drums</li>
+        <li id="bass">bass</li>
+      </ul>
+
+      <div id="sidebar">sidebar</div>
+      <div id="looper">looper</div>
+      <div id="controls">controls</div>
+    </div>
   </body>
 </html>

@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+}
+#wrapper {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  grid-template-rows: 80% 20%;
+}
+
+#instruments {
+  background: purple;
+  display: grid;
+  margin: 0;
+  padding: 0;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  height: 80vh;
+}
+
+#instruments li {
+  list-style: none;
+}
+
+#instruments #guitar {
+  background: red;
+}
+
+#instruments #piano {
+  background: yellow;
+}
+
+#instruments #drums {
+  background: green;
+}
+
+#instruments #bass {
+  background: blue;
+}
+
+#sidebar {
+  background: seagreen;
+  height: 80vh;
+}
+
+#looper {
+  background: oldlace;
+  height: 20vh;
+}
+
+#controls {
+  background: orchid;
+  height: 20vh;
+}
