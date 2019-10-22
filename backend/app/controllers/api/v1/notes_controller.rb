@@ -15,7 +15,7 @@ module Api
         note = Note.create({
           loop_id: params["loopId"],
           cID: params["note"]["cID"],
-          delay: params["note"]["delay"]
+          delay: params["note"]["delay"],
           note_key: params["note"]["note_key"],
           beat_index: params["beatIndex"],
           velocity: params["note"]["velocity"],
