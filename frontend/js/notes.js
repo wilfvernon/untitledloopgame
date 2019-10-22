@@ -42,7 +42,7 @@ function playNotes(notes) {
 function renderNote(cID, noteKey, velocity, volume) {
   const note = createNote(cID, noteKey, velocity, volume);
   playNotes([note]);
-  saveNote(note);
+  //  saveNote(note);
 }
 
 let cID = 0;
