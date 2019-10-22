@@ -5,15 +5,15 @@ let beatInterval = 0;
 
 function startLooper() {
   startTickLoop();
+
   resetCursorAnimation();
   renderMajorTicks(currentLoop.bars);
 }
 
 function startTickLoop() {
   const int = setInterval(e => {
+    if (currentLoop.notes[beatIndex]) playNotes(currentLoop.notes[beatIndex]);
     beatIndex++;
-    if (currentLoop.notes[beatIndex]) playNote(currentLoop.notes[beatIndex]);
-    //literally a metronome because why the fuck not
     // if (beatIndex % loop.beatsPerBar === 0) playNote(createNote(3, 48, 127, 127));
     if (beatIndex === currentLoop.notes.length) {
       beatIndex = 0;

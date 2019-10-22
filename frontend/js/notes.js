@@ -1,27 +1,32 @@
-function createNote(cID, noteKey, velocity, volume) {
+function createNote(cID, note_key, velocity, volume) {
   return {
     cID: cID,
-    noteKey: noteKey,
+    note_key: note_key,
     velocity: velocity,
     volume: volume
   };
 }
 
 function saveNote(note) {
-  currentLoop.notes[beatIndex] = note;
+  if (currentLoop.notes[beatIndex]) {
+    currentLoop.notes[beatIndex].push(note);
+  } else {
+    currentLoop.notes[beatIndex] = [note];
+  }
 }
 
-function playNote(note) {
+function playNotes(notes) {
   var delay = 0; // play one note every quarter second
-
-  MIDI.setVolume(note.cID, note.volume);
-  MIDI.noteOn(note.cID, note.noteKey, note.velocity, delay);
-  MIDI.noteOff(note.cID, note.noteKey, delay + 1);
+  notes.forEach(note => {
+    MIDI.setVolume(note.cID, note.volume);
+    MIDI.noteOn(note.cID, note.note_key, note.velocity, delay);
+    MIDI.noteOff(note.cID, note.note_key, delay + 1);
+  });
 }
 
 function renderNote(cID, noteKey, velocity, volume) {
   const note = createNote(cID, noteKey, velocity, volume);
-  playNote(note);
+  playNotes([note]);
   saveNote(note);
 }
 
