@@ -12,7 +12,12 @@ module Api
       end
 
       def create
-        loopInstance = Loop.new(name: name, beats_per_bar: beatsPerBar, bars: bars, BPM: BPM)
+        loopInstance = Loop.new({
+          name: params["name"], 
+          beats_per_bar: params["beatsPerBar"], 
+          bars: params["bars"], 
+          BPM: params["BPM"]
+        })
         if loopInstance.save
           render json: loopInstance
         else

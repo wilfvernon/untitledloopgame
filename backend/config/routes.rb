@@ -6,3 +6,7 @@ Rails.application.routes.draw do
     end
   end
 end
+
+noteArray.forEach(note => {
+  notes[note.beatIndex] = note
+})
