@@ -1,5 +1,3 @@
-
-
 const beatsPerTempo = 60000 / currentLoop.BPM / currentLoop.beatsPerBar;
 currentLoop.notes.length = currentLoop.beatsPerBar * currentLoop.bars;
 
@@ -25,7 +23,8 @@ function resetCursorAnimation() {
   const steps = 128;
   let step = 1;
 
-  const animationDuration = currentLoop.bars * currentLoop.beatsPerBar * beatsPerTempo;
+  const animationDuration =
+    currentLoop.bars * currentLoop.beatsPerBar * beatsPerTempo;
   const animationInterval = animationDuration / steps;
   const id = setInterval(frame, animationInterval);
   const elem = document.getElementById("cursor");
