@@ -44,6 +44,7 @@ class Loop {
   }
 }
 
+currentLoop = "";
 function createLoop(loop) {
   const newLoop = new Loop(loop);
   if (!currentLoop) {
