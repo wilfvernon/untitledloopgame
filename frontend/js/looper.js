@@ -1,13 +1,9 @@
-const beatsPerTempo = 60000 / currentLoop.BPM / currentLoop.beatsPerBar;
-currentLoop.notes.length = currentLoop.beatsPerBar * currentLoop.bars;
-
 const cursor = document.querySelector("#cursor");
 
 let beatIndex = 0;
 let beatInterval = 0;
 const int = setInterval(e => {
   beatIndex++;
-
   if (currentLoop.notes[beatIndex]) playNote(currentLoop.notes[beatIndex]);
   //literally a metronome because why the fuck not
   // if (beatIndex % loop.beatsPerBar === 0) playNote(createNote(3, 48, 127, 127));
@@ -15,9 +11,7 @@ const int = setInterval(e => {
     beatIndex = 0;
     resetCursorAnimation();
   }
-}, beatsPerTempo);
-
-
+}, currentLoop.beatsPerTempo);
 
 function resetCursorAnimation() {
   const steps = 128;
