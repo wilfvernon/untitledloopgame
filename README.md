@@ -16,7 +16,7 @@ https://github.com/mudcube/MIDI.js thank u 4 playing said sounds
 
 [ ] keyboard interaction => assign focus to certain window for different instruments
 
-[ ] save loops / name loops / open loops / løøps brüdder => focus on backend for that
+[x] save loops / name loops / open loops / løøps brüdder => focus on backend for that
 
 [ ] looper visualization
 
@@ -35,16 +35,6 @@ https://github.com/mudcube/MIDI.js thank u 4 playing said sounds
 [ ] midi keyboard functionality.
 
 ## TODO TOMORROW
-[ ] check backend implementation => 
-
-[ ] set default values for POST request
-
-[ ] create POST request form
-
-[ ] create GET request for Loops
-
-[ ] display GET/:ID request for Loop
-
-[ ] connect PATCH request to backend
-
 [ ] css for loop selection (ex: hover / active)
+
+[ ] keyboard interaction => assign focus to certain window for different instruments
