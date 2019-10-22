@@ -4,8 +4,9 @@ class Note < ApplicationRecord
 
   private
     def default_values
-      self.velocity ||= 63
-      self.volume ||= 127
-      self.save
+        self.delay ||= 0    
+        self.velocity ||= 63
+        self.volume ||= 127
+        self.save
     end
 end
