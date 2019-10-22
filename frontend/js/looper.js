@@ -1,13 +1,7 @@
-const loop = {
-  name: "untitled loop game",
-  notes: [],
-  beatsPerBar: 64,
-  bars: 4,
-  BPM: 90
-};
 
-const beatsPerTempo = 60000 / loop.BPM / loop.beatsPerBar;
-loop.notes.length = loop.beatsPerBar * loop.bars;
+
+const beatsPerTempo = 60000 / currentLoop.BPM / currentLoop.beatsPerBar;
+currentLoop.notes.length = currentLoop.beatsPerBar * currentLoop.bars;
 
 const cursor = document.querySelector("#cursor");
 
@@ -16,12 +10,13 @@ let beatInterval = 0;
 const int = setInterval(e => {
   beatIndex++;
 
-  if (loop.notes[beatIndex]) playNote(loop.notes[beatIndex]);
-  if (beatIndex % loop.beatsPerBar === 0)
-    if (beatIndex === loop.notes.length) {
-      beatIndex = 0;
-      resetCursorAnimation();
-    }
+  if (currentLoop.notes[beatIndex]) playNote(currentLoop.notes[beatIndex]);
+  //literally a metronome because why the fuck not
+  // if (beatIndex % loop.beatsPerBar === 0) playNote(createNote(3, 48, 127, 127));
+  if (beatIndex === currentLoop.notes.length) {
+    beatIndex = 0;
+    resetCursorAnimation();
+  }
 }, beatsPerTempo);
 
 
@@ -30,7 +25,7 @@ function resetCursorAnimation() {
   const steps = 128;
   let step = 1;
 
-  const animationDuration = loop.bars * loop.beatsPerBar * beatsPerTempo;
+  const animationDuration = currentLoop.bars * currentLoop.beatsPerBar * beatsPerTempo;
   const animationInterval = animationDuration / steps;
   const id = setInterval(frame, animationInterval);
   const elem = document.getElementById("cursor");
@@ -59,5 +54,5 @@ function renderMajorTicks(bars) {
   }
 }
 
-renderMajorTicks(loop.bars);
+renderMajorTicks(currentLoop.bars);
 resetCursorAnimation();

@@ -35,7 +35,7 @@ https://github.com/mudcube/MIDI.js thank u 4 playing said sounds
 [ ] midi keyboard functionality.
 
 ## TODO TOMORROW
-[ ] check backend implementation
+[ ] check backend implementation => 
 
 [ ] set default values for POST request
 
