@@ -19,7 +19,7 @@ function startTickLoop() {
       beatIndex = 0;
       resetCursorAnimation();
     }
-  }, currentLoop.beatsPerTempo());
+  }, currentLoop.beatsPerTempo);
 }
 
 function resetCursorAnimation() {
@@ -27,7 +27,7 @@ function resetCursorAnimation() {
   let step = 1;
 
   const animationDuration =
-    currentLoop.bars * currentLoop.beatsPerBar * beatsPerTempo;
+    currentLoop.bars * currentLoop.beatsPerBar * currentLoop.beatsPerTempo;
   const animationInterval = animationDuration / steps;
   const id = setInterval(frame, animationInterval);
   const elem = document.getElementById("cursor");
