@@ -1,18 +1,12 @@
-const BASE_URL = "http://localhost:3000/api/v1";
+const BASE_URL = "localhost:3000/api/v1";
 const LOOPS_URL = BASE_URL + `/loops`;
 const LOOP_URL = id => LOOPS_URL + "/" + id;
 const loops = document.querySelector("#loops");
 
-const content = {
-  method: "GET",
-  headers: {
-    Accept: "application/json"
-  },
-  body: JSON.stringify(mainBody)
-};
-fetch(LOOPS_URL, content)
+fetch(LOOPS_URL)
   .then(res => res.json())
-  .then(e => e.forEach(renderLoop));
+  .then(e => e.forEach(renderLoop))
+  .catch(alert);
 
 function renderLoop(loop) {
   const li = document.createElement("li");

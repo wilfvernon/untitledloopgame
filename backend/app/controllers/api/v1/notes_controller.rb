@@ -1,15 +1,19 @@
-class NotesController < ApplicationController
-    def index
+module Api
+  module V1
+    class NotesController < ApplicationController
+      def index
         notes = Note.all
         render json: notes
-    end
+      end
 
-    def show
+      def show
         note = Note.find(params[:id])
         render json: note
-    end
+      end
 
-    def destroy
+      def destroy
         Note.destroy(params[:id])
+      end
     end
+  end
 end

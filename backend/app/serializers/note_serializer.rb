@@ -1,4 +1,4 @@
 class NoteSerializer < ActiveModel::Serializer
-  attributes :id, :loop_id, :cID, :noteKey, :velocity, :volume, :beat_index
+  attributes :id, :loop_id, :cID, :note_key, :velocity, :volume, :beat_index
   belongs_to :loop
 end

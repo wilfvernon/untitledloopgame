@@ -1,32 +1,36 @@
-class LoopsController < ApplicationController
-    def index
+module Api
+  module V1
+    class LoopsController < ApplicationController
+      def index
         loops = Loop.all
         render json: loops
-    end
+      end
 
-    def show
+      def show
         loopInstance = Loop(params[:id])
         render json: loopInstance
-    end
+      end
 
-    def create
+      def create
         loopInstance = Loop.new(name: name, beats_per_bar: beatsPerBar, bars: bars, BPM: BPM)
         if loopInstance.save
-            render json: loopInstance
-        else 
-            render json: errors
+          render json: loopInstance
+        else
+          render json: errors
         end
-    end
+      end
 
-    def update
+      def update
         if loopInstance = Loop.update(name: name, beats_per_bar: beatsPerBar, bars: bars, BPM: BPM)
-            render json: loopInstance
-        else 
-            render json: errors
+          render json: loopInstance
+        else
+          render json: errors
         end
-    end
+      end
 
-    def destroy
+      def destroy
         Loop.destroy(params[:id])
+      end
     end
+  end
 end
