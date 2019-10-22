@@ -1,23 +1,22 @@
-const BASE_URL = "localhost:3000/api/v1";
+const BASE_URL = "http://localhost:3000/api/v1";
 const LOOPS_URL = BASE_URL + `/loops`;
 const LOOP_URL = id => LOOPS_URL + "/" + id;
-const loops = document.querySelector("#loops");
+let currentLoop = null;
 
 fetch(LOOPS_URL)
   .then(res => res.json())
-  .then(e => e.forEach(renderLoop))
-  .catch(alert);
+  .then(e => {
+    const loops = document.querySelector("#loops");
+    e.forEach(createLoop);
+    startLooper();
+    updateForm();
+  })
+  .catch(console.log);
 
-function renderLoop(loop) {
+function createLoop(loop) {
+  const newLoop = new Loop(loop);
   const li = document.createElement("li");
-  li.innerText = currentLoop.name;
+  li.innerText = newLoop.name;
+  li.dataset.loopId = newLoop.id;
   loops.appendChild(li);
 }
-
-const currentLoop = {
-  name: "untitled loop game",
-  notes: [],
-  beatsPerBar: 64,
-  bars: 4,
-  BPM: 65
-};
