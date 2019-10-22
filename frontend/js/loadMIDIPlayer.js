@@ -1,9 +1,9 @@
 window.onload = function() {
   const instrumentsName = [
-    "honkytonk_piano",
-    "fiddle",
-    "dulcimer",
-    "celesta"
+    "lead_2_sawtooth",
+    "electric_piano_2",
+    "rock_organ",
+    "percussive_organ"
   ];
 
   MIDI.loadPlugin({
