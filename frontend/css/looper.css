@@ -2,3 +2,10 @@
   background: linear-gradient(thistle, oldlace);
   height: 30vh;
 }
+
+#cursor {
+  background: black;
+  position: absolute;
+  width: 2px;
+  height: 30vh;
+}
