@@ -18,7 +18,7 @@ class Loop {
       }
     });
 
-    this.all.push(this);
+    Loop.all.push(this);
   }
 
   get beatsPerTempo() {

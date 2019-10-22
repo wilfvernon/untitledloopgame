@@ -8,13 +8,16 @@ fetch(LOOPS_URL)
   .then(e => {
     const loops = document.querySelector("#loops");
     e.forEach(createLoop);
-    startLooper();
-    updateForm();
   })
   .catch(console.log);
 
 function createLoop(loop) {
   const newLoop = new Loop(loop);
+  if (!currentLoop) {
+    currentLoop = newLoop;
+    updateForm();
+    startLooper();
+  }
   const li = document.createElement("li");
   li.innerText = newLoop.name;
   li.dataset.loopId = newLoop.id;
