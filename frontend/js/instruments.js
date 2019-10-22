@@ -1,4 +1,4 @@
-const instruments = document.querySelector(ul#instruments)
+const instruments = document.querySelector("ul#instruments")
 
 function switchInstrument(event){
     switch (event.target.id) {
