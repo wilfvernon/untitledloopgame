@@ -12,13 +12,16 @@ module Api
       end
 
       def create
-        note = Note.new({
+        note = Note.create({
+          cID: params["cID"]
           loop_id: params["loopId"]
           note_key: params["noteKey"]
+          beat_index: params["beatIndex"]
           velocity: params["velocity"]
           volume: params["volume"]
-          beat_index: params["beatIndex"]
         })
+        render json: note
+      end
 
       def destroy
         Note.destroy(params[:id])
