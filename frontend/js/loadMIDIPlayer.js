@@ -1,5 +1,5 @@
 window.onload = function() {
-  const instrumentsName = ["accordion", "banjo", "cello", "guitar_fret_noise"];
+  const instrumentsName = ["violin", "tuba"];
 
   MIDI.loadPlugin({
     soundfontUrl: "fatboy/",
@@ -7,8 +7,8 @@ window.onload = function() {
     onsuccess: function() {
       MIDI.programChange(0, MIDI.GM.byName[instrumentsName[0]].number);
       MIDI.programChange(1, MIDI.GM.byName[instrumentsName[1]].number);
-      MIDI.programChange(2, MIDI.GM.byName[instrumentsName[2]].number);
-      MIDI.programChange(3, MIDI.GM.byName[instrumentsName[3]].number);
+      // MIDI.programChange(2, MIDI.GM.byName[instrumentsName[2]].number);
+      // MIDI.programChange(3, MIDI.GM.byName[instrumentsName[3]].number);
       startLooper();
     }
   });
