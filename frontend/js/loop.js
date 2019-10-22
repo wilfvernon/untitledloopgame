@@ -1,29 +1,30 @@
 class Loop {
-  constructor(id, name, notesArray, beatsPerBar, bars, BPM) {
-    this.id = id;
-    this.name = name;
+  constructor(loop) {
+    this.id = loop.id;
+    this.name = loop.name;
 
-    this.beatsPerBar = beatsPerBar;
-    this.bars = bars;
-    this.BPM = BPM;
+    this.beatsPerBar = loop.beats_per_bar;
+    this.bars = loop.bars;
+    this.BPM = loop.BPM;
 
     this.notes = [];
-    this.notes.length = beatsPerBar * bars;
+    this.notes.length = loop.beats_per_bar * loop.bars;
 
-    notesArray.forEach(e => {
-      if (this.notes[e.beatIndex].length) {
+    loop.notes.forEach(e => {
+      if (this.notes[e.beatIndex]) {
         this.notes[e.beatIndex].push(e);
       } else {
         this.notes[e.beatIndex] = [].push(e);
       }
     });
 
-    all.push(this);
+    this.all.push(this);
   }
 
   get beatsPerTempo() {
     return 60000 / this.BPM / this.beatsPerBar;
   }
+  static all = [];
 
   static find(id) {
     Loop.find(e => {
@@ -31,5 +32,3 @@ class Loop {
     });
   }
 }
-
-Loop.all = [];

@@ -6,8 +6,6 @@ function updateForm() {
   form.bars.value = currentLoop.bars;
 }
 
-updateForm();
-
 form.addEventListener("submit", e => {
   e.preventDefault();
 });
