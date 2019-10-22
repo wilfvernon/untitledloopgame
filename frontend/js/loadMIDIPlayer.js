@@ -14,6 +14,7 @@ window.onload = function() {
       MIDI.programChange(1, MIDI.GM.byName[instrumentsName[1]].number);
       MIDI.programChange(2, MIDI.GM.byName[instrumentsName[2]].number);
       MIDI.programChange(3, MIDI.GM.byName[instrumentsName[3]].number);
+      startLooper();
     }
   });
 };

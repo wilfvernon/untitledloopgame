@@ -11,10 +11,10 @@ class Loop {
     this.notes.length = loop.beats_per_bar * loop.bars;
 
     loop.notes.forEach(e => {
-      if (this.notes[e.beatIndex]) {
-        this.notes[e.beatIndex].push(e);
+      if (this.notes[e.beat_index]) {
+        this.notes[e.beat_index].push(e);
       } else {
-        this.notes[e.beatIndex] = [].push(e);
+        this.notes[e.beat_index] = [e];
       }
     });
 

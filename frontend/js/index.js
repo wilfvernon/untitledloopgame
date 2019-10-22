@@ -16,7 +16,6 @@ function createLoop(loop) {
   if (!currentLoop) {
     currentLoop = newLoop;
     updateForm();
-    startLooper();
   }
   const li = document.createElement("li");
   li.innerText = newLoop.name;
