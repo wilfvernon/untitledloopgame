@@ -10,8 +10,8 @@ class Loop < ApplicationRecord
 
   private
     def default_values
-      self.bars = 4
-      self.BPM = 92
+      self.bars ||= 4
+      self.BPM ||= 92
       self.beats_per_bar = 128
       self.save
     end

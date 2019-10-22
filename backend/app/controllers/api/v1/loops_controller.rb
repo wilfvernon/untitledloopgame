@@ -14,7 +14,6 @@ module Api
       def create
         loopInstance = Loop.new({
           name: params["name"], 
-          beats_per_bar: params["beatsPerBar"], 
           bars: params["bars"], 
           BPM: params["BPM"]
         })
