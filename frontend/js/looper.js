@@ -17,6 +17,8 @@ const int = setInterval(e => {
   }
 }, beatsPerTempo);
 
+
+
 function resetCursorAnimation() {
   const steps = 128;
   let step = 1;
