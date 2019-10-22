@@ -6,12 +6,7 @@ function updateForm() {
   updateFormElement.bars.value = currentLoop.bars;
 }
 
-<<<<<<< HEAD
 updateFormElement.addEventListener("submit", e => {
-=======
-
-form.addEventListener("submit", e => {
->>>>>>> 2dc2d39e6111cff4857e0c08165f79266055e003
   e.preventDefault();
 
   const contentBody = {
