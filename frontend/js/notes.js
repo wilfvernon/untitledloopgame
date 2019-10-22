@@ -42,7 +42,7 @@ function playNotes(notes) {
 function renderNote(cID, noteKey, velocity, volume, delay) {
   const note = createNote(cID, noteKey, velocity, volume, delay);
   playNotes([note]);
-  saveNote(note);
+  //saveNote(note);
 }
 
 let cID = 0;
@@ -52,14 +52,23 @@ let volume = 157;
 let velocity = 32;
 
 document.body.addEventListener("mousewheel", e => {
-  delay += +e.deltaY / 1000;
-  if (delay > 5) {
-    delay = 5;
+  // delay += +e.deltaY / 1000;
+  // if (delay > 5) {
+  //   delay = 5;
+  // }
+  // if (delay < 0.2) {
+  //   delay = 0.2;
+  // }
+
+  volume += parseInt(e.deltaY);
+
+  if (volume > 255) {
+    volume = 255;
   }
-  if (delay < 0.2) {
-    delay = 0.2;
+  if (volume < 32) {
+    volume = 32;
   }
-  console.log(delay);
+  console.log(volume);
 });
 
 document.body.addEventListener("keydown", e => {
@@ -79,9 +88,4 @@ document.body.addEventListener("keydown", e => {
   if (e.key === "h") renderNote(cID, 57, velocity, volume, delay);
   if (e.key === "j") renderNote(cID, 59, velocity, volume, delay);
   if (e.key === "k") renderNote(cID, 60, velocity, volume, delay);
-
-  if (e.key === "1") cID = 0;
-  if (e.key === "2") cID = 1;
-  // if (e.key === "3") cID = 2;
-  // if (e.key === "4") cID = 3;
 });
