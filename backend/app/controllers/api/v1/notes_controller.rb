@@ -13,12 +13,12 @@ module Api
 
       def create
         note = Note.create({
-          cID: params["cID"]
-          loop_id: params["loopId"]
-          note_key: params["noteKey"]
-          beat_index: params["beatIndex"]
-          velocity: params["velocity"]
-          volume: params["volume"]
+          loop_id: params["loopId"],
+          cID: params["note"]["cID"],
+          note_key: params["note"]["note_key"],
+          beat_index: params["beatIndex"],
+          velocity: params["note"]["velocity"],
+          volume: params["note"]["volume"],
         })
         render json: note
       end

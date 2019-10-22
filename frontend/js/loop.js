@@ -21,14 +21,46 @@ class Loop {
     Loop.all.push(this);
   }
 
+  delete() {
+    const arr = Loop.all;
+    const index = arr.indexOf(this);
+    arr.splice(index, 1);
+
+    const content = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+    fetch(LOOP_URL(this.id), content);
+  }
   get beatsPerTempo() {
     return 60000 / this.BPM / this.beatsPerBar;
   }
   static all = [];
 
   static find(id) {
-    Loop.find(e => {
-      e.id === id;
-    });
+    return Loop.all.find(e => e.id == id);
   }
+}
+
+function createLoop(loop) {
+  const newLoop = new Loop(loop);
+  if (!currentLoop) {
+    currentLoop = newLoop;
+    updateForm();
+  }
+
+  const li = document.createElement("li");
+  li.dataset.loopId = newLoop.id;
+
+  const p = document.createElement("p");
+  p.innerText = newLoop.name;
+  li.append(p);
+
+  const btn = document.createElement("btn");
+  btn.innerText = "delete";
+  li.append(btn);
+
+  loops.appendChild(li);
 }

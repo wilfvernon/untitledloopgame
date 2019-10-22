@@ -13,9 +13,7 @@ module Api
 
       def create
         loopInstance = Loop.new({
-          name: params["name"], 
-          bars: params["bars"], 
-          BPM: params["BPM"]
+          name: params["name"],
         })
         if loopInstance.save
           render json: loopInstance
@@ -25,8 +23,11 @@ module Api
       end
 
       def update
-        if loopInstance = Loop.update(name: name, beats_per_bar: beatsPerBar, bars: bars, BPM: BPM)
-          render json: loopInstance
+        loopObject = Loop.find_by_id(params[:id])
+        if loopObject.update({ name: params["name"],
+                              bars: params["bars"],
+                              BPM: params["BPM"] })
+          render json: loopObject
         else
           render json: errors
         end

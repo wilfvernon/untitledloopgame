@@ -1,10 +1,35 @@
 #sidebar {
-  background: seagreen;
+  background: darkcyan;
   height: 70vh;
+}
+
+#loops {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 #create-form {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#loops li {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+#loops li p {
+  padding: 0;
+  margin: 0;
+  margin-right: auto;
+}
+#loops li p:hover {
+  color: oldlace;
+  cursor: pointer;
+}
+
+#loops li btn:hover {
+  color: oldlace;
+  cursor: pointer;
 }
