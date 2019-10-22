@@ -55,14 +55,21 @@
 
     <!-- Load midi player -->
     <script src="frontend/js/loadMIDIPlayer.js" defer></script>
+
+    <!-- render stuff to page-->
+    <script src="frontend/js/index.js"></script>
+
     <!-- Load scripts to render notes -->
     <script src="frontend/js/notes.js" defer></script>
+
     <!-- Load script to create looper -->
     <script src="frontend/js/looper.js" defer></script>
-    <!-- render stuff to page-->
-    <script src="frontend/js/index.js" defer></script>
+
     <!-- form controls -->
     <script src="frontend/js/controls.js" defer></script>
+
+    <!-- create-form controls -->
+    <script src="frontend/js/sidebar.js" defer></script>
   </head>
   <body>
     <div id="wrapper">
@@ -74,14 +81,20 @@
       </ul>
 
       <div id="sidebar">
-        <div id="create-form"></div>
+        <form id="create-form">
+          <div class="form-entry">
+            <label for="name">NAME</label>
+            <input style="width: 100%" type="text" name="name" />
+          </div>
+          <button>New</button>
+        </form>
         <ul id="loops"></ul>
       </div>
       <div id="looper">
         <div id="cursor"></div>
       </div>
 
-      <form id="controls">
+      <form id="update-form">
         <div class="form-entry">
           <label for="name">NAME</label>
           <input style="width: 100%" type="text" name="name" />

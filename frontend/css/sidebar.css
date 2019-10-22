@@ -2,3 +2,9 @@
   background: seagreen;
   height: 70vh;
 }
+
+#create-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

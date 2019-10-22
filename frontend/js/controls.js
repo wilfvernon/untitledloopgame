@@ -1,9 +1,9 @@
-const form = document.querySelector("#controls");
+const form = document.querySelector("#update-form");
 
 function updateForm() {
-  form.BPM.value = loop.BPM;
-  form.name.value = loop.name;
-  form.bars.value = loop.bars;
+  form.BPM.value = currentLoop.BPM;
+  form.name.value = currentLoop.name;
+  form.bars.value = currentLoop.bars;
 }
 
 updateForm();
