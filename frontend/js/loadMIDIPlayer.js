@@ -1,6 +1,6 @@
 window.onload = function() {
   const instrumentsName = [
-    "honkytonk_piano",
+    "synth_bass_1",
     "accordion",
     "tubular_bells",
     "timpani"

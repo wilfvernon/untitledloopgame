@@ -13,6 +13,21 @@ function saveNote(note) {
   } else {
     currentLoop.notes[beatIndex] = [note];
   }
+
+  const mainBody = {
+    loopId: currentLoop.id,
+    note: note,
+    beatIndex: beatIndex
+  };
+
+  const content = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(mainBody)
+  };
+  fetch(NOTES_URL, content);
 }
 
 function playNotes(notes) {
@@ -32,14 +47,14 @@ function renderNote(cID, noteKey, velocity, volume) {
 
 let cID = 0;
 document.body.addEventListener("keydown", e => {
-  if (e.key === "q") renderNote(cID, 48, 63, 127);
-  if (e.key === "w") renderNote(cID, 50, 63, 127);
-  if (e.key === "e") renderNote(cID, 52, 63, 127);
-  if (e.key === "r") renderNote(cID, 53, 63, 127);
-  if (e.key === "t") renderNote(cID, 55, 63, 127);
-  if (e.key === "y") renderNote(cID, 57, 63, 127);
-  if (e.key === "u") renderNote(cID, 59, 63, 127);
-  if (e.key === "i") renderNote(cID, 60, 63, 127);
+  if (e.key === "a") renderNote(cID, 48, 63, 127);
+  if (e.key === "s") renderNote(cID, 50, 63, 127);
+  if (e.key === "d") renderNote(cID, 52, 63, 127);
+  if (e.key === "f") renderNote(cID, 53, 63, 127);
+  if (e.key === "g") renderNote(cID, 55, 63, 127);
+  if (e.key === "h") renderNote(cID, 57, 63, 127);
+  if (e.key === "j") renderNote(cID, 59, 63, 127);
+  if (e.key === "k") renderNote(cID, 60, 63, 127);
 
   if (e.key === "1") cID = 0;
   if (e.key === "2") cID = 1;

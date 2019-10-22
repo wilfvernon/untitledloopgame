@@ -5,7 +5,6 @@ let beatInterval = 0;
 
 function startLooper() {
   startTickLoop();
-
   resetCursorAnimation();
   renderMajorTicks(currentLoop.bars);
 }
