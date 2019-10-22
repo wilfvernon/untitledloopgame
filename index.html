@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Bungee+Shade|Fascinate+Inline&display=swap"
+      rel="stylesheet"
+    />
     <!-- polyfill -->
     <script src="MIDI.js/inc/shim/Base64.js" type="text/javascript"></script>
     <script
@@ -42,14 +46,23 @@
       type="text/javascript"
     ></script>
     <title>Document</title>
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="frontend/css/index.css" />
+    <link rel="stylesheet" href="frontend/css/wrapper.css" />
+    <link rel="stylesheet" href="frontend/css/looper.css" />
+    <link rel="stylesheet" href="frontend/css/sidebar.css" />
+    <link rel="stylesheet" href="frontend/css/controls.css" />
+    <link rel="stylesheet" href="frontend/css/instruments.css" />
 
     <!-- Load midi player -->
-    <script src="loadMIDIPlayer.js" defer></script>
+    <script src="frontend/js/loadMIDIPlayer.js" defer></script>
     <!-- Load scripts to render notes -->
-    <script src="notes.js" defer></script>
+    <script src="frontend/js/notes.js" defer></script>
     <!-- Load script to create looper -->
-    <script src="looper.js" defer></script>
+    <script src="frontend/js/looper.js" defer></script>
+    <!-- render stuff to page-->
+    <script src="frontend/js/index.js" defer></script>
+    <!-- form controls -->
+    <script src="frontend/js/controls.js" defer></script>
   </head>
   <body>
     <div id="wrapper">
@@ -60,12 +73,30 @@
         <li id="bass">bass</li>
       </ul>
 
-      <div id="sidebar">sidebar</div>
+      <div id="sidebar">
+        <div id="create-form"></div>
+        <ul id="loops"></ul>
+      </div>
       <div id="looper">
         <div id="cursor"></div>
       </div>
 
-      <div id="controls">controls</div>
+      <form id="controls">
+        <div class="form-entry">
+          <label for="name">NAME</label>
+          <input style="width: 100%" type="text" name="name" />
+        </div>
+        <div class="form-entry">
+          <label for="BPM">BPM</label>
+          <input type="number" name="BPM" />
+        </div>
+        <div class="form-entry">
+          <label for="bars">BARS</label>
+          <input type="number" name="bars" />
+        </div>
+
+        <button>Save</button>
+      </form>
     </div>
   </body>
 </html>
