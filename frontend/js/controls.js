@@ -17,14 +17,7 @@ function endRecording(){
 
 function undoLastRecording(){
   deleteRecording()
-  .then(() => {
-    fetch(LOOPS_URL)
-    .then(res => res.json())
-    .then(e => {
-      e.forEach(createLoop);
-    })
-    .catch(console.log)
-  })
+
 }
 
 function updateForm() {
