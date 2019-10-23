@@ -1,7 +1,6 @@
 const cursor = document.querySelector("#cursor");
 
 let beatIndex = 0;
-let beatInterval = 0;
 
 function startLooper() {
   startTickLoop();
@@ -13,8 +12,9 @@ function startTickLoop() {
   setInterval(e => {
     if (currentLoop.notes[beatIndex]) playNotes(currentLoop.notes[beatIndex]);
     beatIndex++;
-    // if (beatIndex % loop.beatsPerBar === 0) playNote(createNote(3, 48, 127, 127));
-    if (beatIndex >= currentLoop.bars * currentLoop.beatsPerBar) {
+    if (beatIndex % currentLoop.beatsPerBar === 0)
+      console.log("tick", beatIndex / 128);
+    if (beatIndex >= currentLoop.notes.length) {
       beatIndex = 0;
       resetCursorAnimation();
     }
@@ -22,12 +22,10 @@ function startTickLoop() {
 }
 
 function resetCursorAnimation() {
-  const steps = 256;
+  const steps = 128;
   let step = 1;
 
-  const animationDuration =
-    currentLoop.bars * currentLoop.beatsPerBar * currentLoop.beatsPerTempo;
-  const animationInterval = animationDuration / steps;
+  const animationInterval = currentLoop.beatsPerTempo * currentLoop.bars;
 
   const elem = document.getElementById("cursor");
   const id = setInterval(e => {

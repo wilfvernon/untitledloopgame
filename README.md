@@ -20,13 +20,13 @@ https://github.com/mudcube/MIDI.js thank u 4 playing said sounds
 
 [ ] looper visualization
 
-[ ] record
+[ ] record add to form
 
 ## Stretch
 
-[ ] tempo - time/control (all things counting)
+[x] tempo - time/control (all things counting)
 
-[ ] key/sample duration -> look into sound engineering the VEL/VOL/DEL for each instrument 
+[x] key/sample duration -> look into sound engineering the VEL/VOL/DEL for each instrument 
 
 [ ] change instruments (not today)
 
@@ -60,3 +60,13 @@ Make sure you cannot play instrument and type on forms at same time
 [ ] pick metronome sound
 
 [ ] metronome on/off
+
+## Things
+
+[ ] When you click on a box, it should be white even if you are hovered over it.
+
+[ ] Recordings should be done today (?)
+
+[ ] Recordings undo
+
+[ ] LOOPA

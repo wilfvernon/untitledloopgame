@@ -4,6 +4,7 @@ function updateForm() {
   updateFormElement.BPM.value = currentLoop.BPM;
   updateFormElement.name.value = currentLoop.name;
   updateFormElement.bars.value = currentLoop.bars;
+  currentLoop.updateNotesLength();
 }
 
 updateFormElement.addEventListener("submit", e => {

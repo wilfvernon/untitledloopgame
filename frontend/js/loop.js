@@ -34,9 +34,15 @@ class Loop {
     };
     fetch(LOOP_URL(this.id), content);
   }
+
+  updateNotesLength() {
+    this.notes.length = this.beatsPerBar * this.bars;
+  }
+
   get beatsPerTempo() {
     return 60000 / this.BPM / this.beatsPerBar;
   }
+
   static all = [];
 
   static find(id) {
