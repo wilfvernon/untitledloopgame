@@ -27,6 +27,7 @@ module Api
         loopInstance.update({ name: params["name"],
                              bars: params["bars"],
                              BPM: params["BPM"] })
+        render json: loopInstance
       end
 
       def destroy

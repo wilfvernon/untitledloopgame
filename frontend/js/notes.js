@@ -28,7 +28,7 @@ function createNote(cID, note_key, velocity, volume, delay) {
   };
 }
 
-function saveNote(note, beatIndex) {
+function saveNote(note, beatIndex, off) {
   if (currentLoop.notes[beatIndex]) {
     currentLoop.notes[beatIndex].push(note);
   } else {
@@ -38,7 +38,8 @@ function saveNote(note, beatIndex) {
   const mainBody = {
     loopId: currentLoop.id,
     note: note,
-    beatIndex: beatIndex
+    beatIndex: beatIndex,
+    beatIndexOff: off
   };
 
   const content = {
@@ -100,7 +101,7 @@ function endNote(noteKey, input) {
         volume,
         delay
       );
-      saveNote(note, timeEvent[input].index);
+      saveNote(note, timeEvent[input].index, beatIndex);
     }
     timeEvent[input] = null;
   }

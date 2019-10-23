@@ -4,7 +4,6 @@ function updateForm() {
   updateFormElement.BPM.value = currentLoop.BPM;
   updateFormElement.name.value = currentLoop.name;
   updateFormElement.bars.value = currentLoop.bars;
-  currentLoop.updateNotesLength();
 }
 
 updateFormElement.addEventListener("submit", e => {
@@ -18,9 +17,18 @@ updateFormElement.addEventListener("submit", e => {
   const content = {
     method: "PATCH",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      Accept: "application/json"
     },
     body: JSON.stringify(contentBody)
   };
-  fetch(LOOP_URL(currentLoop.id), content);
+  fetch(LOOP_URL(currentLoop.id), content)
+    .then(e => e.json())
+    .then(e => {
+      currentLoop.BPM = e.BPM;
+      currentLoop.bars = e.bars;
+      currentLoop.updateNotesLength();
+      beatIndex = 0;
+      startLooper();
+    });
 });
