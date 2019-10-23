@@ -1,4 +1,5 @@
 const createForm = document.querySelector("#create-form");
+const createFormInput = createForm.querySelector("input")
 
 createForm.addEventListener("submit", e => {
   e.preventDefault();

@@ -13,7 +13,7 @@ function startTickLoop() {
     if (currentLoop.notes[beatIndex]) playNotes(currentLoop.notes[beatIndex]);
     beatIndex++;
     if (beatIndex % currentLoop.beatsPerBar === 0)
-      console.log("tick", beatIndex / 128);
+      // console.log("tick", beatIndex / 128);
     if (beatIndex >= currentLoop.notes.length) {
       beatIndex = 0;
       resetCursorAnimation();

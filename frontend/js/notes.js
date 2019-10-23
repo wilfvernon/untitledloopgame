@@ -18,13 +18,14 @@ const notesByKey = {
   k: 60
 };
 
-function createNote(cID, note_key, velocity, volume, delay) {
+function createNote(cID, note_key, velocity, volume, delay, recordingId) {
   return {
     cID: cID,
     note_key: note_key,
     velocity: velocity,
     volume: volume,
-    delay: delay
+    delay: delay,
+    recordingId: recordingId
   };
 }
 
@@ -38,7 +39,8 @@ function saveNote(note, beatIndex) {
   const mainBody = {
     loopId: currentLoop.id,
     note: note,
-    beatIndex: beatIndex
+    beatIndex: beatIndex,
+    recordingId: recordingId,
   };
 
   const content = {
@@ -58,8 +60,11 @@ let velocity = 32;
 
 const timeEvent = {};
 
+const typingElements = [createFormInput, ...updateFormInputs]
+
 document.body.addEventListener("keydown", e => {
-  if (notesByKey[e.key]) {
+  if (notesByKey[e.key] && !typingElements.includes(document.activeElement)) {
+    console.log("hi")
     startNote(cID, notesByKey[e.key], velocity, volume, e.key);
   }
 });
@@ -78,19 +83,12 @@ function playNotes(notes) {
   });
 }
 
-<<<<<<< HEAD
-function renderNote(cID, noteKey, velocity, volume, delay) {
-  const note = createNote(cID, noteKey, velocity, volume, delay);
-  playNotes([note]);
-  // saveNote(note);
-=======
 function startNote(cID, noteKey, velocity, volume, keyInput) {
   if (!timeEvent[keyInput]) {
     timeEvent[keyInput] = { time: Date.now(), cID: cID, index: beatIndex };
     MIDI.setVolume(cID, volume);
     MIDI.noteOn(cID, noteKey, velocity, 0);
   }
->>>>>>> 68978f7aa1ec6fd6779a0126a74db0ebe90fcafb
 }
 
 let isRecording = true;
