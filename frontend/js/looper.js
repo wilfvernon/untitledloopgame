@@ -5,7 +5,7 @@ let tickLoopId = 0;
 let cursorAnimationId = 0;
 
 function resetLooper() {
-  startLooper();
+  stopLooper();
   setTimeout(startLooper, 100);
 }
 function stopLooper() {
