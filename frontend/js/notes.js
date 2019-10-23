@@ -8,7 +8,7 @@ function createNote(cID, note_key, velocity, volume, delay) {
   };
 }
 
-function saveNote(note) {
+function saveNote(note, beatIndex) {
   if (currentLoop.notes[beatIndex]) {
     currentLoop.notes[beatIndex].push(note);
   } else {
@@ -46,32 +46,12 @@ function renderNote(cID, noteKey, velocity, volume, delay) {
 }
 
 let cID = 0;
-
 let delay = 1;
 let volume = 157;
 let velocity = 32;
 
-document.body.addEventListener("mousewheel", e => {
-  // delay += +e.deltaY / 1000;
-  // if (delay > 5) {
-  //   delay = 5;
-  // }
-  // if (delay < 0.2) {
-  //   delay = 0.2;
-  // }
-
-  volume += parseInt(e.deltaY);
-
-  if (volume > 512) {
-    volume = 512;
-  }
-  if (volume < 32) {
-    volume = 32;
-  }
-  console.log(volume);
-});
-
 const timeEvent = {};
+
 document.body.addEventListener("keydown", e => {
   if (notesByKey[e.key]) {
     startNote(cID, notesByKey[e.key], velocity, volume, e.key);
@@ -86,18 +66,19 @@ document.body.addEventListener("keyup", e => {
 
 function startNote(cID, noteKey, velocity, volume, input) {
   if (!timeEvent[input]) {
-    timeEvent[input] = { time: Date.now(), cID: cID };
-
-    // MIDI.setVolume(cID, volume);
-    // MIDI.noteOn(cID, noteKey, velocity, 0);
+    timeEvent[input] = { time: Date.now(), cID: cID, index: beatIndex };
+    MIDI.setVolume(cID, volume);
+    MIDI.noteOn(cID, noteKey, velocity, 0);
   }
 }
-function endNote(noteKey, input) {
+function endNote(noteKey, input, recording) {
   if (timeEvent[input]) {
     delay = (Date.now() - timeEvent[input].time) / 1000.0;
-    // MIDI.noteOff(timeEvent[input].cID, noteKey, delay);
-    console.log(input, delay);
-
+    MIDI.noteOff(timeEvent[input].cID, noteKey, delay);
+    if (recording) {
+      const note = createNote(cID, noteKey, velocity, volume, delay);
+      saveNote(note, timeEvent[index]);
+    }
     timeEvent[input] = null;
   }
 }
@@ -121,3 +102,23 @@ const notesByKey = {
   j: 59,
   k: 60
 };
+
+document.body.addEventListener("mousewheel", e => {
+  // delay += +e.deltaY / 1000;
+  // if (delay > 5) {
+  //   delay = 5;
+  // }
+  // if (delay < 0.2) {
+  //   delay = 0.2;
+  // }
+
+  volume += parseInt(e.deltaY);
+
+  if (volume > 512) {
+    volume = 512;
+  }
+  if (volume < 32) {
+    volume = 32;
+  }
+  console.log(volume);
+});
