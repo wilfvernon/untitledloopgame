@@ -26,7 +26,15 @@ function startTickLoop() {
   tickLoopId = setInterval(e => {
     if (currentLoop.notes[beatIndex]) playNotes(currentLoop.notes[beatIndex]);
     beatIndex++;
-    // if (beatIndex % currentLoop.beatsPerBar === 0)
+    if (beatIndex % currentLoop.beatsPerBar === 0) {
+      playNote({
+        cID: 14,
+        volume: 127,
+        note_key: 10,
+        velocity: 63,
+        delay: 0.1
+      });
+    }
     if (beatIndex >= currentLoop.notes.length) {
       // console.log("tick", beatIndex / 128);
       beatIndex = 0;

@@ -49,7 +49,8 @@ function saveNote(note, beatIndex, off) {
   const content = {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      Accept: "application/json"
     },
     body: JSON.stringify(mainBody)
   };
@@ -82,11 +83,13 @@ document.body.addEventListener("keyup", e => {
 });
 
 function playNotes(notes) {
-  notes.forEach(note => {
-    MIDI.setVolume(note.cID, note.volume);
-    MIDI.noteOn(note.cID, note.note_key, note.velocity, 0);
-    MIDI.noteOff(note.cID, note.note_key, note.delay);
-  });
+  notes.forEach(playNote);
+}
+
+function playNote(note) {
+  MIDI.setVolume(note.cID, note.volume);
+  MIDI.noteOn(note.cID, note.note_key, note.velocity, 0);
+  MIDI.noteOff(note.cID, note.note_key, note.delay);
 }
 
 function startNote(cID, noteKey, velocity, volume, keyInput) {
