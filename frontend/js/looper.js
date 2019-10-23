@@ -5,7 +5,7 @@ let beatIndex = 0;
 function startLooper() {
   startTickLoop();
   resetCursorAnimation();
-  renderMajorTicks(currentLoop.bars);
+  resetMajorTicks(currentLoop.bars);
 }
 
 function startTickLoop() {
@@ -22,23 +22,19 @@ function startTickLoop() {
 }
 
 function resetCursorAnimation() {
-  const steps = 128;
-  let step = 1;
-
-  const animationInterval = currentLoop.beatsPerTempo * currentLoop.bars;
+  const max = currentLoop.notes.length;
 
   const elem = document.getElementById("cursor");
   const id = setInterval(e => {
-    if (step >= steps + 1) {
+    if ((beatIndex * 70) / max >= 70) {
       clearInterval(id);
     } else {
-      elem.style.left = (step * 70) / steps + "vw";
-      step++;
+      elem.style.left = (beatIndex * 70) / max + "vw";
     }
-  }, animationInterval);
+  }, 15);
 }
 
-function renderMajorTicks(bars) {
+function resetMajorTicks(bars) {
   const looper = document.querySelector("#looper");
 
   for (let i = 0; i < bars; i++) {
