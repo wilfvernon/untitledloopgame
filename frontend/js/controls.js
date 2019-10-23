@@ -31,13 +31,13 @@ function toggleMetronome() {
   } else {
     metro.innerText = "Metronome Off";
   }
-  function updateForm() {
-    updateFormElement.BPM.value = currentLoop.BPM;
-    updateFormElement.name.value = currentLoop.name;
-    updateFormElement.bars.value = currentLoop.bars;
-  }
 }
 
+function updateForm() {
+  updateFormElement.BPM.value = currentLoop.BPM;
+  updateFormElement.name.value = currentLoop.name;
+  updateFormElement.bars.value = currentLoop.bars;
+}
 controls.addEventListener("click", e => {
   if (e.target.id === "record-btn") {
     if (isRecording) {
