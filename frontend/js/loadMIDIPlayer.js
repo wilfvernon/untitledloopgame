@@ -16,7 +16,7 @@ window.onload = function() {
     // "lead_2_sawtooth",
     // "synth_bass_1",
     // "synth_drum"
-    "pad_7_halo",
+    "choir_aahs",
     "banjo",
     "dulcimer",
     "fx_6_goblins"
