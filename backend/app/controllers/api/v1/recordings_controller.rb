@@ -13,6 +13,7 @@ module Api
       def destroy
         loopInstance = Loop.find(params["id"])
         Recording.destroy(loopInstance.recordings[-1].id)
+        loopInstance = Loop.find(params["id"])
         render json: loopInstance
       end
     end
