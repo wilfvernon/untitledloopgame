@@ -4,6 +4,10 @@ let beatIndex = 0;
 let tickLoopId = 0;
 let cursorAnimationId = 0;
 
+function resetLooper() {
+  startLooper();
+  setTimeout(startLooper, 100);
+}
 function stopLooper() {
   clearInterval(tickLoopId);
   clearInterval(cursorAnimationId);
@@ -22,7 +26,15 @@ function startTickLoop() {
   tickLoopId = setInterval(e => {
     if (currentLoop.notes[beatIndex]) playNotes(currentLoop.notes[beatIndex]);
     beatIndex++;
-    // if (beatIndex % currentLoop.beatsPerBar === 0)
+    if (beatIndex % currentLoop.beatsPerBar === 0) {
+      playNote({
+        cID: 14,
+        volume: 127,
+        note_key: 10,
+        velocity: 63,
+        delay: 0.1
+      });
+    }
     if (beatIndex >= currentLoop.notes.length) {
       // console.log("tick", beatIndex / 128);
       beatIndex = 0;
@@ -64,8 +76,6 @@ function resetMajorTicks(bars) {
 
 function renderNotes() {
   resetMajorTicks(currentLoop.bars);
-
-  const looper = document.querySelector("#looper");
 
   for (let i = 0; i < currentLoop.notes.length; i++) {
     if (currentLoop.notes[i]) {
