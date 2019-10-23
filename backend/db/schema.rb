@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_22_205228) do
+ActiveRecord::Schema.define(version: 2019_10_23_175941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,11 @@ ActiveRecord::Schema.define(version: 2019_10_22_205228) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "beat_index"
     t.float "delay"
+    t.integer "recording_id"
+    t.integer "beat_index_off"
+  end
+
+  create_table "recordings", force: :cascade do |t|
   end
 
 end

@@ -18,13 +18,14 @@ const notesByKey = {
   k: 60
 };
 
-function createNote(cID, note_key, velocity, volume, delay) {
+function createNote(cID, note_key, velocity, volume, delay, recordingId) {
   return {
     cID: cID,
     note_key: note_key,
     velocity: velocity,
     volume: volume,
-    delay: delay
+    delay: delay,
+    recordingId: recordingId
   };
 }
 
@@ -40,6 +41,7 @@ function saveNote(note, beatIndex, off) {
     note: note,
     beatIndex: beatIndex,
     beatIndexOff: off
+    // recordingId: recordingId
   };
 
   const content = {
@@ -49,7 +51,11 @@ function saveNote(note, beatIndex, off) {
     },
     body: JSON.stringify(mainBody)
   };
-  fetch(NOTES_URL, content);
+  fetch(NOTES_URL, content)
+    .then(e => e.json())
+    .then(e => {
+      renderNote(e, e.beat_index);
+    });
 }
 
 let cID = 0;
@@ -59,8 +65,10 @@ let velocity = 32;
 
 const timeEvent = {};
 
+const typingElements = [createFormInput, ...updateFormInputs];
+
 document.body.addEventListener("keydown", e => {
-  if (notesByKey[e.key]) {
+  if (notesByKey[e.key] && !typingElements.includes(document.activeElement)) {
     startNote(cID, notesByKey[e.key], velocity, volume, e.key);
   }
 });
@@ -87,7 +95,7 @@ function startNote(cID, noteKey, velocity, volume, keyInput) {
   }
 }
 
-let isRecording = true;
+let isRecording = false;
 
 function endNote(noteKey, input) {
   if (timeEvent[input]) {

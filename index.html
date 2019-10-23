@@ -59,20 +59,23 @@
     <!-- loops brother -->
     <script src="frontend/js/loop.js" defer></script>
 
+    <!-- handles recordings -->
+    <script src="frontend/js/recording.js" defer></script>
+
+    <!-- create-form controls -->
+    <script src="frontend/js/sidebar.js" defer></script>
+
+    <!-- form controls -->
+    <script src="frontend/js/controls.js" defer></script>
+
     <!-- Load scripts to render notes -->
     <script src="frontend/js/notes.js" defer></script>
 
     <!-- Load script to create looper -->
     <script src="frontend/js/looper.js" defer></script>
 
-    <!-- form controls -->
-    <script src="frontend/js/controls.js" defer></script>
-
     <!-- Load script to Manage Instruments -->
     <script src="frontend/js/instruments.js" defer></script>
-
-    <!-- create-form controls -->
-    <script src="frontend/js/sidebar.js" defer></script>
 
     <!-- render stuff to page-->
     <script src="frontend/js/index.js" defer></script>
@@ -114,23 +117,25 @@
       <div id="looper">
         <div id="cursor"></div>
       </div>
-
-      <form id="update-form">
-        <div class="form-entry">
-          <label for="name">NAME</label>
-          <input style="width: 100%" type="text" name="name" />
-        </div>
-        <div class="form-entry">
-          <label for="BPM">BPM</label>
-          <input type="number" name="BPM" />
-        </div>
-        <div class="form-entry">
-          <label for="bars">BARS</label>
-          <input type="number" name="bars" />
-        </div>
-
-        <button>Save</button>
-      </form>
+      <div id="controls">
+        <button id="record-btn">Record</button>
+        <button id="undo-btn">Undo Last Recording</button>
+        <form id="update-form">
+          <div class="form-entry">
+            <label for="name">NAME</label>
+            <input style="width: 100%" type="text" name="name" />
+          </div>
+          <div class="form-entry">
+            <label for="BPM">BPM</label>
+            <input type="number" name="BPM" />
+          </div>
+          <div class="form-entry">
+            <label for="bars">BARS</label>
+            <input type="number" name="bars" />
+          </div>
+          <button>Save</button>
+        </form>
+      </div>
     </div>
   </body>
 </html>
