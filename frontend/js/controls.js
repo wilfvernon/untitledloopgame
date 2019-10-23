@@ -1,30 +1,43 @@
 const controls = document.querySelector("#controls");
-const undoBtn = controls.querySelector("#undo-btn")
+const undoBtn = controls.querySelector("#undo-btn");
 const updateFormElement = document.querySelector("#update-form");
 const updateFormInputs = updateFormElement.querySelectorAll("input");
 
-function startRecording(){
-  isRecording = true
-  undoBtn.disabled = true
+function startRecording() {
+  isRecording = true;
+  undoBtn.disabled = true;
   currentRecording = new Recording();
-  postRecording(currentRecording)
+  postRecording(currentRecording);
 }
 
-function endRecording(){
-  undoBtn.disabled = false
-  isRecording = false
+function endRecording() {
+  undoBtn.disabled = false;
+  isRecording = false;
 }
 
-function undoLastRecording(){
-  deleteRecording()
-  .then(() => {
+function undoLastRecording() {
+  deleteRecording().then(() => {
     fetch(LOOPS_URL)
-    .then(res => res.json())
-    .then(e => {
-      e.forEach(createLoop);
-    })
-    .catch(console.log)
-  })
+      .then(res => res.json())
+      .then(e => {
+        e.forEach(createLoop);
+      })
+      .catch(console.log);
+  });
+}
+
+let metronome = false;
+const metro = document.querySelector("#metro");
+
+metro.addEventListener("click", toggleMetronome);
+
+function toggleMetronome() {
+  metronome = !metronome;
+  if (metronome) {
+    metro.innerText = "Metronome On";
+  } else {
+    metro.innerText = "Metronome Off";
+  }
 }
 
 function updateForm() {

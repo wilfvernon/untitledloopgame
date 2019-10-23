@@ -12,7 +12,6 @@ module Api
 
       def destroy
         loopInstance = Loop.find(params["id"])
-        byebug
         Recording.destroy(loopInstance.recordings[-1].id)
       end
     end
