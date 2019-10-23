@@ -40,7 +40,7 @@ function saveNote(note, beatIndex) {
     loopId: currentLoop.id,
     note: note,
     beatIndex: beatIndex,
-    recordingId: recordingId,
+    recordingId: recordingId
   };
 
   const content = {
@@ -64,7 +64,6 @@ const typingElements = [createFormInput, ...updateFormInputs]
 
 document.body.addEventListener("keydown", e => {
   if (notesByKey[e.key] && !typingElements.includes(document.activeElement)) {
-    console.log("hi")
     startNote(cID, notesByKey[e.key], velocity, volume, e.key);
   }
 });
@@ -91,7 +90,7 @@ function startNote(cID, noteKey, velocity, volume, keyInput) {
   }
 }
 
-let isRecording = true;
+let isRecording = false;
 
 function endNote(noteKey, input) {
   if (timeEvent[input]) {
@@ -103,7 +102,8 @@ function endNote(noteKey, input) {
         noteKey,
         velocity,
         volume,
-        delay
+        delay,
+        currentRecording.id
       );
       saveNote(note, timeEvent[input].index);
     }

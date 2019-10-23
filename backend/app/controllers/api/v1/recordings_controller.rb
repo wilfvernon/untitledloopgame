@@ -4,7 +4,12 @@ class RecordingsController < ApplicationController
         render json: recordings
     end
 
+    def create
+        recording = Recording.create(id: params[:id])
+    end
+
     def destroy
-        Recording.destroy(params[:id])
+        loopInstance = Loop.find(params[:id])
+        Recording.destroy(loopInstance.recordings[-1].id)
     end
 end

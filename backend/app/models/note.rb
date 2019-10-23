@@ -1,5 +1,6 @@
 class Note < ApplicationRecord
     belongs_to :loop
+    belongs_to :recording
     after_initialize :default_values
 
   private

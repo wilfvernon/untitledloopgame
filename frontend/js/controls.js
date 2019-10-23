@@ -1,19 +1,30 @@
 const controls = document.querySelector("#controls");
+const undoBtn = controls.querySelector("#undo-btn")
 const updateFormElement = document.querySelector("#update-form");
 const updateFormInputs = updateFormElement.querySelectorAll("input");
-let currentRecording = 1;
 
 function startRecording(){
   isRecording = true
+  undoBtn.disabled = true
   currentRecording = new Recording();
+  postRecording(currentRecording)
 }
 
 function endRecording(){
+  undoBtn.disabled = false
   isRecording = false
 }
 
 function undoLastRecording(){
-  current
+  deleteRecording()
+  .then(() => {
+    fetch(LOOPS_URL)
+    .then(res => res.json())
+    .then(e => {
+      e.forEach(createLoop);
+    })
+    .catch(console.log)
+  })
 }
 
 function updateForm() {

@@ -8,6 +8,10 @@ class Loop < ApplicationRecord
   validates :BPM, :numericality => { :less_than_or_equal_to => 160 }
   after_initialize :default_values
 
+  def recordings
+    self.notes.map{|note| note.recording}.uniq
+  end
+
   private
 
   def default_values
