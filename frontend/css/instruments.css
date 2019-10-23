@@ -13,7 +13,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 1.8rem;
+
   user-select: none;
   box-sizing: border-box;
 }
@@ -27,22 +28,70 @@
   border: 10px white solid;
 }
 
-#instruments #guitar {
-  background: red;
-  color: blue;
-}
-
 #instruments #piano {
   background: yellow;
   color: green;
 }
-
-#instruments #drums {
+#instruments #acoustic-guitar {
+  background: red;
+  color: blue;
+}
+#instruments #acoustic-bass {
   background: green;
   color: yellow;
 }
-
-#instruments #bass {
+#instruments #electric-bass {
   background: blue;
   color: red;
+}
+
+#instruments #electric-piano {
+  background: red;
+  color: blue;
+}
+#instruments #violin {
+  background: green;
+  color: yellow;
+}
+#instruments #tuba {
+  background: blue;
+  color: red;
+}
+#instruments #clarinet {
+  background: yellow;
+  color: green;
+}
+
+#instruments #perc-organ {
+  background: green;
+  color: yellow;
+}
+#instruments #harp {
+  background: blue;
+  color: red;
+}
+#instruments #ocarina {
+  background: yellow;
+  color: green;
+}
+#instruments #music-box {
+  background: red;
+  color: blue;
+}
+
+#instruments #square {
+  background: blue;
+  color: red;
+}
+#instruments #saw {
+  background: yellow;
+  color: green;
+}
+#instruments #synth-bass {
+  background: red;
+  color: blue;
+}
+#instruments #drums {
+  background: green;
+  color: yellow;
 }

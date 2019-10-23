@@ -19,6 +19,7 @@ createForm.addEventListener("submit", e => {
       createLoop(e);
       currentLoop = Loop.all[Loop.all.length - 1];
       updateForm();
+      createForm.reset();
     })
     .catch(alert);
 });

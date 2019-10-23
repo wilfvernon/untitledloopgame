@@ -1,3 +1,23 @@
+const notesByKey = {
+  q: 35,
+  w: 36,
+  e: 38,
+  r: 40,
+  t: 41,
+  y: 43,
+  u: 45,
+  i: 47,
+  o: 48,
+  a: 48,
+  s: 50,
+  d: 52,
+  f: 53,
+  g: 55,
+  h: 57,
+  j: 59,
+  k: 60
+};
+
 function createNote(cID, note_key, velocity, volume, delay) {
   return {
     cID: cID,
@@ -8,7 +28,7 @@ function createNote(cID, note_key, velocity, volume, delay) {
   };
 }
 
-function saveNote(note) {
+function saveNote(note, beatIndex) {
   if (currentLoop.notes[beatIndex]) {
     currentLoop.notes[beatIndex].push(note);
   } else {
@@ -31,57 +51,90 @@ function saveNote(note) {
   fetch(NOTES_URL, content);
 }
 
+let cID = 0;
+let delay = 1;
+let volume = 157;
+let velocity = 32;
+
+const timeEvent = {};
+
+document.body.addEventListener("keydown", e => {
+  if (notesByKey[e.key]) {
+    startNote(cID, notesByKey[e.key], velocity, volume, e.key);
+  }
+});
+
+document.body.addEventListener("keyup", e => {
+  if (notesByKey[e.key]) {
+    endNote(notesByKey[e.key], e.key);
+  }
+});
+
 function playNotes(notes) {
   notes.forEach(note => {
     MIDI.setVolume(note.cID, note.volume);
     MIDI.noteOn(note.cID, note.note_key, note.velocity, 0);
-    MIDI.noteOff(note.cID, note.note_key, delay);
+    MIDI.noteOff(note.cID, note.note_key, note.delay);
   });
 }
 
+<<<<<<< HEAD
 function renderNote(cID, noteKey, velocity, volume, delay) {
   const note = createNote(cID, noteKey, velocity, volume, delay);
   playNotes([note]);
   // saveNote(note);
+=======
+function startNote(cID, noteKey, velocity, volume, keyInput) {
+  if (!timeEvent[keyInput]) {
+    timeEvent[keyInput] = { time: Date.now(), cID: cID, index: beatIndex };
+    MIDI.setVolume(cID, volume);
+    MIDI.noteOn(cID, noteKey, velocity, 0);
+  }
+>>>>>>> 68978f7aa1ec6fd6779a0126a74db0ebe90fcafb
 }
 
-let cID = 0;
+let isRecording = true;
 
-let delay = 0.2;
-let volume = 157;
-let velocity = 32;
+function endNote(noteKey, input) {
+  if (timeEvent[input]) {
+    MIDI.noteOff(timeEvent[input].cID, noteKey, 0);
+    delay = (Date.now() - timeEvent[input].time) / 1000.0;
+    if (isRecording) {
+      const note = createNote(
+        timeEvent[input].cID,
+        noteKey,
+        velocity,
+        volume,
+        delay
+      );
+      saveNote(note, timeEvent[input].index);
+    }
+    timeEvent[input] = null;
+  }
+}
 
 document.body.addEventListener("mousewheel", e => {
-  delay += +e.deltaY / 1000;
-  if (delay > 5) {
-    delay = 5;
+  // delay += +e.deltaY / 1000;
+  // if (delay > 5) {
+  //   delay = 5;
+  // }
+  // if (delay < 0.2) {
+  //   delay = 0.2;
+  // }
+
+  volume += parseInt(e.deltaY);
+
+  if (volume > 512) {
+    volume = 512;
   }
-  if (delay < 0.2) {
-    delay = 0.2;
+  if (volume < 32) {
+    volume = 32;
   }
-  console.log(delay);
+  console.log(volume);
 });
 
-document.body.addEventListener("keydown", e => {
-  if (e.key === "q") renderNote(cID, 35, velocity, volume, delay);
-  if (e.key === "w") renderNote(cID, 36, velocity, volume, delay);
-  if (e.key === "e") renderNote(cID, 38, velocity, volume, delay);
-  if (e.key === "r") renderNote(cID, 40, velocity, volume, delay);
-  if (e.key === "t") renderNote(cID, 41, velocity, volume, delay);
-  if (e.key === "y") renderNote(cID, 43, velocity, volume, delay);
-  if (e.key === "u") renderNote(cID, 45, velocity, volume, delay);
-  if (e.key === "i") renderNote(cID, 47, velocity, volume, delay);
-  if (e.key === "a") renderNote(cID, 48, velocity, volume, delay);
-  if (e.key === "s") renderNote(cID, 50, velocity, volume, delay);
-  if (e.key === "d") renderNote(cID, 52, velocity, volume, delay);
-  if (e.key === "f") renderNote(cID, 53, velocity, volume, delay);
-  if (e.key === "g") renderNote(cID, 55, velocity, volume, delay);
-  if (e.key === "h") renderNote(cID, 57, velocity, volume, delay);
-  if (e.key === "j") renderNote(cID, 59, velocity, volume, delay);
-  if (e.key === "k") renderNote(cID, 60, velocity, volume, delay);
-
-  if (e.key === "1") cID = 0;
-  if (e.key === "2") cID = 1;
-  // if (e.key === "3") cID = 2;
-  // if (e.key === "4") cID = 3;
-});
+// function renderNote(cID, noteKey, velocity, volume, delay) {
+//   const note = createNote(cID, noteKey, velocity, volume, delay);
+//   playNotes([note]);
+//   //saveNote(note);
+// }
