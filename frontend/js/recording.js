@@ -28,8 +28,22 @@ function postRecording(recording) {
   fetch(RECORDINGS_URL, fetchObj);
 }
 
-function deleteRecording() {
-  fetch(RECORDING_URL(currentLoop.id), {
-    method: "DELETE"
-  });
+function deleteRecording(){
+    fetch(RECORDING_URL(currentLoop.id), {
+        method: "DELETE",
+
+        headers: {"Accept": "application/json"}
+    }).then(res => res.json())
+    .then(loop => {
+        currentLoop.notes = []
+        if (loop.notes){
+        loop.notes.forEach(e => {
+            if (currentLoop.notes[e.beat_index]) {
+              currentLoop.notes[e.beat_index].push(e);
+            } else {
+              currentLoop.notes[e.beat_index] = [e];
+            }
+          })};
+        resetLooper();
+    })
 }

@@ -16,14 +16,7 @@ function endRecording() {
 }
 
 function undoLastRecording() {
-  deleteRecording().then(() => {
-    fetch(LOOPS_URL)
-      .then(res => res.json())
-      .then(e => {
-        e.forEach(createLoop);
-      })
-      .catch(console.log);
-  });
+  deleteRecording();
 }
 
 let metronome = false;
@@ -38,12 +31,11 @@ function toggleMetronome() {
   } else {
     metro.innerText = "Metronome Off";
   }
-}
-
-function updateForm() {
-  updateFormElement.BPM.value = currentLoop.BPM;
-  updateFormElement.name.value = currentLoop.name;
-  updateFormElement.bars.value = currentLoop.bars;
+  function updateForm() {
+    updateFormElement.BPM.value = currentLoop.BPM;
+    updateFormElement.name.value = currentLoop.name;
+    updateFormElement.bars.value = currentLoop.bars;
+  }
 }
 
 controls.addEventListener("click", e => {
