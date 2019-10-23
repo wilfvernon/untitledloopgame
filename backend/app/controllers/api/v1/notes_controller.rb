@@ -21,6 +21,7 @@ module Api
           beat_index_off: params["beatIndexOff"],
           velocity: params["note"]["velocity"],
           volume: params["note"]["volume"],
+          recording_id: params["note"]["recordingId"]
         })
         render json: note
       end

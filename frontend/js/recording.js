@@ -28,6 +28,13 @@ function postRecording(recording){
 }
 
 function deleteRecording(){
-    return fetch(RECORDING_URL(currentLoop.id), {method: "DELETE"})
+    return fetch(RECORDING_URL(currentLoop.id), {
+        headers: {"Accept":"application/json"}, 
+        method: "DELETE"
+    }).then(res => json.parse(res))
+    .then(loop => {
+        currentLoop = loop
+        resetLooper();
+    })
 }
 
