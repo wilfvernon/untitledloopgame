@@ -35,7 +35,8 @@ function deleteRecording(){
         headers: {"Accept": "application/json"}
     }).then(res => res.json())
     .then(loop => {
-        currentLoop.notes = []
+        currentLoop.notes = [];
+        currentLoop.notes.length = (currentLoop.beatsPerBar * currentLoop.bars)
         if (loop.notes){
         loop.notes.forEach(e => {
             if (currentLoop.notes[e.beat_index]) {
@@ -44,6 +45,7 @@ function deleteRecording(){
               currentLoop.notes[e.beat_index] = [e];
             }
           })};
+          
         resetLooper();
     })
 }
