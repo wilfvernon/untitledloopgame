@@ -4,6 +4,10 @@ let beatIndex = 0;
 let tickLoopId = 0;
 let cursorAnimationId = 0;
 
+function resetLooper() {
+  startLooper();
+  setTimeout(startLooper, 100);
+}
 function stopLooper() {
   clearInterval(tickLoopId);
   clearInterval(cursorAnimationId);
@@ -64,8 +68,6 @@ function resetMajorTicks(bars) {
 
 function renderNotes() {
   resetMajorTicks(currentLoop.bars);
-
-  const looper = document.querySelector("#looper");
 
   for (let i = 0; i < currentLoop.notes.length; i++) {
     if (currentLoop.notes[i]) {

@@ -1,5 +1,5 @@
 const createForm = document.querySelector("#create-form");
-const createFormInput = createForm.querySelector("input")
+const createFormInput = createForm.querySelector("input");
 
 createForm.addEventListener("submit", e => {
   e.preventDefault();
@@ -20,6 +20,10 @@ createForm.addEventListener("submit", e => {
       createLoop(e);
       currentLoop = Loop.all[Loop.all.length - 1];
       updateForm();
+
+      stopLooper();
+      startLooper();
+
       createForm.reset();
     })
     .catch(alert);
@@ -32,6 +36,7 @@ loops.addEventListener("click", e => {
     const loop = Loop.find(id);
     currentLoop = loop;
     updateForm();
+    resetLooper();
   }
   if (e.target.tagName === "BTN") {
     const li = e.target.closest("li");
@@ -41,5 +46,6 @@ loops.addEventListener("click", e => {
     loop.delete();
     if (Loop.all) currentLoop = Loop.all[0];
     updateForm();
+    resetLooper();
   }
 });

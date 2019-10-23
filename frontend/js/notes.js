@@ -30,6 +30,8 @@ function createNote(cID, note_key, velocity, volume, delay, recordingId) {
 }
 
 function saveNote(note, beatIndex, off) {
+  note["beat_index"] = beatIndex;
+  note["beat_index_off"] = off;
   if (currentLoop.notes[beatIndex]) {
     currentLoop.notes[beatIndex].push(note);
   } else {
