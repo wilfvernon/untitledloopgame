@@ -30,10 +30,13 @@ function createNote(cID, note_key, velocity, volume, delay, recordingId) {
 }
 
 function saveNote(note, beatIndex, off) {
-<<<<<<< HEAD
-  console.log(note)
-=======
->>>>>>> 95fb5ba1f38387fa8b9e27cc827d2d43d2cabe4c
+  const mainBody = {
+    loopId: currentLoop.id,
+    note: note,
+    beatIndex: beatIndex,
+    beatIndexOff: off
+  };
+
   note["beat_index"] = beatIndex;
   note["beat_index_off"] = off;
   if (currentLoop.notes[beatIndex]) {
@@ -41,13 +44,6 @@ function saveNote(note, beatIndex, off) {
   } else {
     currentLoop.notes[beatIndex] = [note];
   }
-
-  const mainBody = {
-    loopId: currentLoop.id,
-    note: note,
-    beatIndex: beatIndex,
-    beatIndexOff: off
-  };
 
   const content = {
     method: "POST",

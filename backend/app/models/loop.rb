@@ -9,7 +9,7 @@ class Loop < ApplicationRecord
   after_initialize :default_values
 
   def recordings
-    self.notes.map{|note| note.recording}.uniq
+    self.notes.map { |note| note.recording }.uniq
   end
 
   private
