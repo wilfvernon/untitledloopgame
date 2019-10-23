@@ -29,7 +29,7 @@ function createNote(cID, note_key, velocity, volume, delay, recordingId) {
   };
 }
 
-function saveNote(note, beatIndex) {
+function saveNote(note, beatIndex, off) {
   if (currentLoop.notes[beatIndex]) {
     currentLoop.notes[beatIndex].push(note);
   } else {
@@ -40,7 +40,12 @@ function saveNote(note, beatIndex) {
     loopId: currentLoop.id,
     note: note,
     beatIndex: beatIndex,
+<<<<<<< HEAD
     recordingId: recordingId
+=======
+    beatIndexOff: off
+    // recordingId: recordingId
+>>>>>>> f919b76f76d14d2ae0cb4141bb22188aaf900d32
   };
 
   const content = {
@@ -50,7 +55,11 @@ function saveNote(note, beatIndex) {
     },
     body: JSON.stringify(mainBody)
   };
-  fetch(NOTES_URL, content);
+  fetch(NOTES_URL, content)
+    .then(e => e.json())
+    .then(e => {
+      renderNote(e, e.beat_index);
+    });
 }
 
 let cID = 0;
@@ -60,7 +69,7 @@ let velocity = 32;
 
 const timeEvent = {};
 
-const typingElements = [createFormInput, ...updateFormInputs]
+const typingElements = [createFormInput, ...updateFormInputs];
 
 document.body.addEventListener("keydown", e => {
   if (notesByKey[e.key] && !typingElements.includes(document.activeElement)) {
@@ -105,7 +114,7 @@ function endNote(noteKey, input) {
         delay,
         currentRecording.id
       );
-      saveNote(note, timeEvent[input].index);
+      saveNote(note, timeEvent[input].index, beatIndex);
     }
     timeEvent[input] = null;
   }

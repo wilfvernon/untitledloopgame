@@ -18,6 +18,7 @@ module Api
           delay: params["note"]["delay"],
           note_key: params["note"]["note_key"],
           beat_index: params["beatIndex"],
+          beat_index_off: params["beatIndexOff"],
           velocity: params["note"]["velocity"],
           volume: params["note"]["volume"],
         })

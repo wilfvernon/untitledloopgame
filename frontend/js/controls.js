@@ -31,18 +31,21 @@ function updateForm() {
   updateFormElement.BPM.value = currentLoop.BPM;
   updateFormElement.name.value = currentLoop.name;
   updateFormElement.bars.value = currentLoop.bars;
-  currentLoop.updateNotesLength();
 }
 
-controls.addEventListener("click", event => {
-  if(event.target.id === "record-btn"){
-    if(isRecording){
+controls.addEventListener("click", e => {
+  if (e.target.id === "record-btn") {
+    if (isRecording) {
+      e.target.style = "";
+      e.target.innerText = "Record";
       endRecording();
-    }else{
+    } else {
+      e.target.style = "background: red";
+      e.target.innerText = "RECORDING";
       startRecording();
     }
-  }else if(event.target.id === "undo-btn") undoLastRecording()
-})
+  } else if (e.target.id === "undo-btn") undoLastRecording();
+});
 
 updateFormElement.addEventListener("submit", e => {
   e.preventDefault();
@@ -55,9 +58,18 @@ updateFormElement.addEventListener("submit", e => {
   const content = {
     method: "PATCH",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      Accept: "application/json"
     },
     body: JSON.stringify(contentBody)
   };
-  fetch(LOOP_URL(currentLoop.id), content);
+  fetch(LOOP_URL(currentLoop.id), content)
+    .then(e => e.json())
+    .then(e => {
+      currentLoop.BPM = e.BPM;
+      currentLoop.bars = e.bars;
+      currentLoop.updateNotesLength();
+      beatIndex = 0;
+      startLooper();
+    });
 });
