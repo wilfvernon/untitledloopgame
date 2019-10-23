@@ -28,12 +28,13 @@ function startTickLoop() {
     beatIndex++;
     if (metronome && beatIndex % currentLoop.beatsPerBar === 0) {
       const note = {
-        cID: 0,
+        cID: 11,
         volume: 127,
-        note_key: 10,
-        velocity: 127,
-        delay: 0.5
+        note_key: 70,
+        velocity: 16,
+        delay: 0.1
       };
+      if (beatIndex == 128) note.note_key = 80;
       playNote(note);
     }
     if (beatIndex >= currentLoop.notes.length) {
