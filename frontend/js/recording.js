@@ -1,15 +1,13 @@
 class Recording {
     constructor(){
         this.id = Recording.incrementId()
-        this.notes = []
     }
     static getLastRecordingId(){
         fetch(RECORDINGS_URL)
         .then(res => res.json())
-        .then(recordings => this.latestId = recordings[-1].id)
+        .then(recordings => this.latestId = recordings[(recordings.length-1)].id)
     }
     static incrementId() {
-        if (!this.latestId) getLastRecordingId()
         this.latestId++
         return this.latestId
       }
@@ -30,6 +28,6 @@ function postRecording(recording){
 }
 
 function deleteRecording(){
-    return fetch(RECORDING_URL(currentLoop.id))
+    return fetch(RECORDING_URL(currentLoop.id), {method: "DELETE"})
 }
 

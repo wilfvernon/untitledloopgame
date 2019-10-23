@@ -8,6 +8,8 @@ const RECORDING_URL = id => RECORDINGS_URL + "/" + id;
 let currentLoop = null;
 let currentRecording = null;
 
+Recording.getLastRecordingId()
+
 fetch(LOOPS_URL)
   .then(res => res.json())
   .then(e => {

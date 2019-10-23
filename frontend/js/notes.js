@@ -30,6 +30,9 @@ function createNote(cID, note_key, velocity, volume, delay, recordingId) {
 }
 
 function saveNote(note, beatIndex, off) {
+  console.log(note)
+  note["beat_index"] = beatIndex;
+  note["beat_index_off"] = off;
   if (currentLoop.notes[beatIndex]) {
     currentLoop.notes[beatIndex].push(note);
   } else {
@@ -40,18 +43,13 @@ function saveNote(note, beatIndex, off) {
     loopId: currentLoop.id,
     note: note,
     beatIndex: beatIndex,
-<<<<<<< HEAD
-    recordingId: recordingId
-=======
     beatIndexOff: off
-    // recordingId: recordingId
->>>>>>> f919b76f76d14d2ae0cb4141bb22188aaf900d32
   };
 
   const content = {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(mainBody)
   };
