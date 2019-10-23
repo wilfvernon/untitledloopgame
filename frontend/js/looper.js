@@ -26,7 +26,7 @@ function startTickLoop() {
   tickLoopId = setInterval(e => {
     if (currentLoop.notes[beatIndex]) playNotes(currentLoop.notes[beatIndex]);
     beatIndex++;
-    if (beatIndex % currentLoop.beatsPerBar === 0) {
+    if (metronome && beatIndex % currentLoop.beatsPerBar === 0) {
       playNote({
         cID: 14,
         volume: 127,
