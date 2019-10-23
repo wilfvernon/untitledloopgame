@@ -47,7 +47,7 @@ function renderNote(cID, noteKey, velocity, volume, delay) {
 
 let cID = 0;
 
-let delay = 0.2;
+let delay = 1;
 let volume = 157;
 let velocity = 32;
 
@@ -62,8 +62,8 @@ document.body.addEventListener("mousewheel", e => {
 
   volume += parseInt(e.deltaY);
 
-  if (volume > 255) {
-    volume = 255;
+  if (volume > 512) {
+    volume = 512;
   }
   if (volume < 32) {
     volume = 32;
@@ -71,21 +71,53 @@ document.body.addEventListener("mousewheel", e => {
   console.log(volume);
 });
 
+const timeEvent = {};
 document.body.addEventListener("keydown", e => {
-  if (e.key === "q") renderNote(cID, 35, velocity, volume, delay);
-  if (e.key === "w") renderNote(cID, 36, velocity, volume, delay);
-  if (e.key === "e") renderNote(cID, 38, velocity, volume, delay);
-  if (e.key === "r") renderNote(cID, 40, velocity, volume, delay);
-  if (e.key === "t") renderNote(cID, 41, velocity, volume, delay);
-  if (e.key === "y") renderNote(cID, 43, velocity, volume, delay);
-  if (e.key === "u") renderNote(cID, 45, velocity, volume, delay);
-  if (e.key === "i") renderNote(cID, 47, velocity, volume, delay);
-  if (e.key === "a") renderNote(cID, 48, velocity, volume, delay);
-  if (e.key === "s") renderNote(cID, 50, velocity, volume, delay);
-  if (e.key === "d") renderNote(cID, 52, velocity, volume, delay);
-  if (e.key === "f") renderNote(cID, 53, velocity, volume, delay);
-  if (e.key === "g") renderNote(cID, 55, velocity, volume, delay);
-  if (e.key === "h") renderNote(cID, 57, velocity, volume, delay);
-  if (e.key === "j") renderNote(cID, 59, velocity, volume, delay);
-  if (e.key === "k") renderNote(cID, 60, velocity, volume, delay);
+  if (notesByKey[e.key]) {
+    startNote(cID, notesByKey[e.key], velocity, volume, e.key);
+  }
 });
+
+document.body.addEventListener("keyup", e => {
+  if (notesByKey[e.key]) {
+    endNote(notesByKey[e.key], e.key);
+  }
+});
+
+function startNote(cID, noteKey, velocity, volume, input) {
+  if (!timeEvent[input]) {
+    timeEvent[input] = { time: Date.now(), cID: cID };
+
+    // MIDI.setVolume(cID, volume);
+    // MIDI.noteOn(cID, noteKey, velocity, 0);
+  }
+}
+function endNote(noteKey, input) {
+  if (timeEvent[input]) {
+    delay = (Date.now() - timeEvent[input].time) / 1000.0;
+    // MIDI.noteOff(timeEvent[input].cID, noteKey, delay);
+    console.log(input, delay);
+
+    timeEvent[input] = null;
+  }
+}
+
+const notesByKey = {
+  q: 35,
+  w: 36,
+  e: 38,
+  r: 40,
+  t: 41,
+  y: 43,
+  u: 45,
+  i: 47,
+  o: 48,
+  a: 48,
+  s: 50,
+  d: 52,
+  f: 53,
+  g: 55,
+  h: 57,
+  j: 59,
+  k: 60
+};

@@ -12,10 +12,14 @@ window.onload = function() {
     "orchestral_harp",
     "ocarina",
     "music_box",
-    "lead_1_square",
-    "lead_2_sawtooth",
-    "synth_bass_1",
-    "synth_drum"
+    // "lead_1_square",
+    // "lead_2_sawtooth",
+    // "synth_bass_1",
+    // "synth_drum"
+    "pad_7_halo",
+    "banjo",
+    "dulcimer",
+    "fx_6_goblins"
   ];
 
   MIDI.loadPlugin({
