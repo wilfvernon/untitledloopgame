@@ -5,6 +5,6 @@ class RecordingsController < ApplicationController
     end
 
     def destroy
-        
+        Recording.destroy(params[:id])
     end
 end
