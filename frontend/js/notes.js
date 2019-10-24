@@ -98,11 +98,11 @@ document.body.addEventListener("keydown", e => {
   if(!typingElements.includes(document.activeElement)){
     ///Change Octave//
     if(e.key === "Shift"){
-      octaveUp();
+      if(currentOctave < 3) octaveUp();
     }
 
     if(e.key === "Control"){
-      octaveDown();
+      if(currentOctave > -1) octaveDown();
     }
 
     //Play notes//
