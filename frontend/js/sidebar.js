@@ -54,3 +54,15 @@ loops.addEventListener("click", e => {
     resetLooper();
   }
 });
+
+const honker = document.querySelector("#title > img");
+const honks = [
+  new Audio("frontend/honk/goose_honk_b_01.wav"),
+  new Audio("frontend/honk/goose_honk_b_02.wav"),
+  new Audio("frontend/honk/goose_honk_b_03.wav"),
+  new Audio("frontend/honk/goose_honk_b_05.wav"),
+  new Audio("frontend/honk/goose_honk_b_06.wav")
+];
+honker.addEventListener("click", e => {
+  honks[Math.floor(Math.random() * honks.length)].play();
+});

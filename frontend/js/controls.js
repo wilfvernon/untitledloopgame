@@ -31,9 +31,9 @@ const metro = document.querySelector("#metro");
 metro.addEventListener("click", e => {
   metronome = !metronome;
   if (metronome) {
-    e.target.style = "";
-  } else {
     e.target.style = "opacity: 1; background: red";
+  } else {
+    e.target.style = "";
   }
 });
 
