@@ -120,7 +120,7 @@ document.body.addEventListener("keydown", e => {
 });
 
 document.body.addEventListener("keyup", e => {
-  if (notesByKey[e.key]) {
+``  if (notesByKey[e.key]) {
     endNote(notesByKey[e.key], e.key);
   }
 });

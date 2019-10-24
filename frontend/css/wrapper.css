@@ -14,9 +14,8 @@ body {
   margin: 0px;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 30vh;
+  grid-template-rows: 70vh 1fr;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  border-right: 1px solid #bdbdbd;
 }
 #side {
   width: 30vw;
@@ -24,6 +23,6 @@ body {
   display: grid;
   margin: 0px;
   grid-template-columns: 1fr;
-  grid-template-rows: 5fr 7fr;
-  background: #f0f0f0;
+  grid-template-rows: 1fr 30vh;
+  background: #fff;
 }

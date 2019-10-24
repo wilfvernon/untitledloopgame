@@ -66,7 +66,7 @@ function createLoop(loop) {
   li.append(p);
 
   const btn = document.createElement("btn");
-  btn.innerText = "delete";
+  btn.innerText = "x";
   li.append(btn);
 
   loops.appendChild(li);
