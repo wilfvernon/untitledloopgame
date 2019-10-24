@@ -40,3 +40,11 @@ https://github.com/mudcube/MIDI.js thank u 4 playing said sounds
 [ ] instrument volume slider
 
 [ ] scoring but the epic kind.
+
+## TOMORROW
+
+[ ] Intro to Material Design & CSS
+
+[ ] Keyboard Shifting
+
+[ ] How to use
