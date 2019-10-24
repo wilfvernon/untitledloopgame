@@ -83,7 +83,11 @@ updateFormElement.addEventListener("submit", e => {
 });
 
 controls.addEventListener("mousewheel", e => {
-  if (e.target.closest("div").id === "volume-div") {
+  if (
+    e.target.closest("div").id === "volume-div" ||
+    e.target.closest("div").id === "slidecontainer"
+  ) {
+    console.log("hi");
     volume += parseInt(e.deltaY);
     if (volume > 512) {
       volume = 512;
