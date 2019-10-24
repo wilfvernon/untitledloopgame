@@ -7,6 +7,10 @@ const RECORDINGS_URL = BASE_URL + `/recordings`;
 const RECORDING_URL = id => RECORDINGS_URL + "/" + id;
 let currentLoop = null;
 let currentRecording = null;
+let modal = document.querySelector(".modal")
+modal.onclick = function() {
+  modal.style.display = "none";
+}
 
 Recording.getLastRecordingId();
 
