@@ -120,8 +120,15 @@
         <div id="cursor"></div>
       </div>
       <div id="controls">
-        <p>Octave <span id="octave">0</span></p>
-        <p>Volume <span id="volume">0</span></p>
+        <div> 
+          <button class="octave-btn">-</button>
+          <span class="tooltip">Octave
+            <span class="tooltiptextabove">Hit 'Shift' to go up. Hit 'Ctrl' to go down.</span>
+          </span>
+          <span id="octave">0</span>
+          <button class="octave-btn">+</button>
+        </div>
+        <p class="tooltip">Volume <span  id="volume">0</span></p>
         <button id="record-btn">Record</button>
         <button id="undo-btn">Undo Last Recording</button>
         <button id="metro">Metronome Off</button>
