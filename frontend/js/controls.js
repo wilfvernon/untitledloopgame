@@ -83,7 +83,7 @@ updateFormElement.addEventListener("submit", e => {
 });
 
 controls.addEventListener("mousewheel", e => {
-  if ((e.target.closest("div").id = "volume-div")) {
+  if (e.target.closest("div").id === "volume-div") {
     volume += parseInt(e.deltaY);
     if (volume > 512) {
       volume = 512;
@@ -94,7 +94,7 @@ controls.addEventListener("mousewheel", e => {
     volumeKnob.innerText = parseInt((volume * 100) / 512);
     volumeSlider.value = volume;
   }
-  if ((e.target.closest("div").id = "velocity-div")) {
+  if (e.target.closest("div").id === "velocity-div") {
     velocity += parseInt(e.deltaY);
     if (velocity > 512) {
       velocity = 512;
