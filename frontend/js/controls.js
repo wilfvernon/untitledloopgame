@@ -6,6 +6,7 @@ const volumeKnob = document.querySelector("#volume");
 const volumeSlider = document.querySelector("#volume-slider");
 const velocityKnob = document.querySelector("#velocity");
 const velocitySlider = document.querySelector("#velocity-slider");
+
 volumeSlider.value = volume;
 velocitySlider.value = velocity;
 
@@ -31,9 +32,9 @@ const metro = document.querySelector("#metro");
 metro.addEventListener("click", e => {
   metronome = !metronome;
   if (metronome) {
-    e.target.style = "";
-  } else {
     e.target.style = "opacity: 1; background: red";
+  } else {
+    e.target.style = "";
   }
 });
 
