@@ -4,7 +4,7 @@ const updateFormElement = document.querySelector("#update-form");
 const updateFormInputs = updateFormElement.querySelectorAll("input");
 const volumeKnob = document.querySelector("#volume");
 const volumeSlider = document.querySelector("#volume-slider");
- volumeSlider.value = volume
+volumeSlider.value = volume;
 
 function startRecording() {
   isRecording = true;
@@ -83,20 +83,31 @@ updateFormElement.addEventListener("submit", e => {
 });
 
 controls.addEventListener("mousewheel", e => {
-  volume += parseInt(e.deltaY);
-
-  if (volume > 512) {
-    volume = 512;
+  if ((e.target.closest("div").id = "volume-div")) {
+    volume += parseInt(e.deltaY);
+    if (volume > 512) {
+      volume = 512;
+    }
+    if (volume < 0) {
+      volume = 0;
+    }
+    volumeKnob.innerText = parseInt((volume * 100) / 512);
+    volumeSlider.value = volume;
   }
-  if (volume < 0) {
-    volume = 0;
+  if ((e.target.closest("div").id = "velocity-div")) {
+    velocity += parseInt(e.deltaY);
+    if (velocity > 512) {
+      velocity = 512;
+    }
+    if (velocity < 0) {
+      velocity = 0;
+    }
+    velocityKnob.innerText = parseInt((velocity * 100) / 512);
+    velocitySlider.value = velocity;
   }
-  volumeKnob.innerText = parseInt((volume * 100) / 512);
-  volumeSlider.value = volume;
 });
 
-volumeSlider.oninput = function (){
-  volume = this.value
+volumeSlider.oninput = function() {
+  volume = this.value;
   volumeKnob.innerText = parseInt((volume * 100) / 512);
-}
-
+};
