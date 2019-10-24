@@ -3,6 +3,8 @@ const undoBtn = controls.querySelector("#undo-btn");
 const updateFormElement = document.querySelector("#update-form");
 const updateFormInputs = updateFormElement.querySelectorAll("input");
 const volumeKnob = document.querySelector("#volume");
+const volumeSlider = document.querySelector("#volume-slider");
+ volumeSlider.value = volume
 
 function startRecording() {
   isRecording = true;
@@ -80,7 +82,7 @@ updateFormElement.addEventListener("submit", e => {
     });
 });
 
-document.body.addEventListener("mousewheel", e => {
+controls.addEventListener("mousewheel", e => {
   volume += parseInt(e.deltaY);
 
   if (volume > 512) {
@@ -90,4 +92,11 @@ document.body.addEventListener("mousewheel", e => {
     volume = 0;
   }
   volumeKnob.innerText = parseInt((volume * 100) / 512);
+  volumeSlider.value = volume;
 });
+
+volumeSlider.oninput = function (){
+  volume = this.value
+  volumeKnob.innerText = parseInt((volume * 100) / 512);
+}
+

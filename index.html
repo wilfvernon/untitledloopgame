@@ -140,7 +140,14 @@
             <span class="tooltiptextabove">Octave Up 'Shift'</span>
           </button>
         </div>
-        <p class="tooltip">Volume <span id="volume">0</span></p>
+        <div class="tooltip">
+          <span>Input Volume 
+            <span  id="volume">50</span>
+          </span>
+          <div class="slidecontainer">
+            <input type="range" min="0" max="512" value="256" class="slider" id="volume-slider">
+          </div>
+        </div>
         <button id="record-btn">Record</button>
         <button id="undo-btn">Undo Last Recording</button>
         <button id="metro">Metronome Off</button>
