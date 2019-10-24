@@ -4,7 +4,10 @@ const updateFormElement = document.querySelector("#update-form");
 const updateFormInputs = updateFormElement.querySelectorAll("input");
 const volumeKnob = document.querySelector("#volume");
 const volumeSlider = document.querySelector("#volume-slider");
+const velocityKnob = document.querySelector("#velocity");
+const velocitySlider = document.querySelector("#velocity-slider");
 volumeSlider.value = volume;
+velocitySlider.value = velocity;
 
 function startRecording() {
   isRecording = true;
@@ -25,16 +28,14 @@ function undoLastRecording() {
 let metronome = false;
 const metro = document.querySelector("#metro");
 
-metro.addEventListener("click", toggleMetronome);
-
-function toggleMetronome() {
+metro.addEventListener("click", e => {
   metronome = !metronome;
   if (metronome) {
-    metro.innerText = "Metronome On";
+    e.target.style = "";
   } else {
-    metro.innerText = "Metronome Off";
+    e.target.style = "opacity: 1; background: red";
   }
-}
+});
 
 function updateForm() {
   updateFormElement.BPM.value = currentLoop.BPM;
@@ -45,11 +46,9 @@ controls.addEventListener("click", e => {
   if (e.target.id === "record-btn") {
     if (isRecording) {
       e.target.style = "";
-      e.target.innerText = "Record";
       endRecording();
     } else {
-      e.target.style = "background: red";
-      e.target.innerText = "RECORDING";
+      e.target.style = "opacity: 1; background: red";
       startRecording();
     }
   } else if (e.target.id === "undo-btn") undoLastRecording();
@@ -85,9 +84,8 @@ updateFormElement.addEventListener("submit", e => {
 controls.addEventListener("mousewheel", e => {
   if (
     e.target.closest("div").id === "volume-div" ||
-    e.target.closest("div").id === "slidecontainer"
+    e.target.closest("div").id === "volslide"
   ) {
-    console.log("hi");
     volume += parseInt(e.deltaY);
     if (volume > 512) {
       volume = 512;
@@ -98,20 +96,28 @@ controls.addEventListener("mousewheel", e => {
     volumeKnob.innerText = parseInt((volume * 100) / 512);
     volumeSlider.value = volume;
   }
-  if (e.target.closest("div").id === "velocity-div") {
+
+  if (
+    e.target.closest("div").id === "velocity-div" ||
+    e.target.closest("div").id === "velslide"
+  ) {
     velocity += parseInt(e.deltaY);
-    if (velocity > 512) {
-      velocity = 512;
+    if (velocity > 64) {
+      velocity = 64;
     }
     if (velocity < 0) {
       velocity = 0;
     }
-    velocityKnob.innerText = parseInt((velocity * 100) / 512);
+    velocityKnob.innerText = parseInt((velocity * 100) / 127);
     velocitySlider.value = velocity;
   }
 });
 
 volumeSlider.oninput = function() {
-  volume = this.value;
+  volume = +this.value;
   volumeKnob.innerText = parseInt((volume * 100) / 512);
+};
+velocitySlider.oninput = function() {
+  velocity = +this.value;
+  velocitySlider.innerText = parseInt((velocity * 100) / 512);
 };

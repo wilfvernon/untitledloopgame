@@ -23,6 +23,6 @@ body {
   display: grid;
   margin: 0px;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 30vh;
+  grid-template-rows: 1fr 40vh;
   background: #fff;
 }
