@@ -1,6 +1,6 @@
 #sidebar {
-  background: darkcyan;
-  height: 70vh;
+  background: white;
+  border-left: 1px solid #bdbdbd;
 }
 
 #loops {

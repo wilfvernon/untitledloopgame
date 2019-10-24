@@ -1,12 +1,14 @@
 #i-wrapper {
+  background: #f0f0f0;
+
   height: 70vh;
   display: flex;
   justify-content: center;
 }
 
 #instruments {
-  background: white;
   display: grid;
+  color: #1d1d1d;
 
   margin: 0px;
   padding: 4px;
@@ -40,6 +42,8 @@
 }
 @keyframes shrink {
   100% {
+    font-size: 150%;
+
     margin: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   }
@@ -60,7 +64,7 @@
 
 #instruments li:active {
   animation: show 0.1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  border: 6px solid rgba(0, 0, 0, 0.3);
+  border: 6px solid rgba(255, 255, 255, 0.3);
   cursor: pointer;
 }
 
@@ -68,82 +72,67 @@
   0% {
   }
   100% {
-    font-size: 1.75rem;
-    color: rgb(212, 212, 212);
-    border-color: rgba(0, 0, 0, 0.4);
+    font-size: 150%;
+
+    color: rgb(231, 231, 231);
+    border-color: rgba(255, 255, 255, 0.4);
   }
 }
 
 .instrument_selected {
   color: white !important;
-  border: 5px solid rgba(0, 0, 0, 0.3);
+  border: 5px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 #instruments #piano {
   background: #ef5350;
-  color: #66bb6a;
 }
 #instruments #acoustic-guitar {
   background: #ec407a;
-  color: #9ccc65;
 }
 #instruments #acoustic-bass {
   background: #ab47bc;
-  color: #d4e157;
 }
 #instruments #electric-bass {
   background: #7e57c2;
-  color: #ffee58;
 }
 
 #instruments #electric-piano {
   background: #5c6bc0;
-  color: #ffca28;
 }
 #instruments #violin {
   background: #42a5f5;
-  color: #ffa726;
 }
 #instruments #tuba {
   background: #29b6f6;
-  color: #ff7043;
 }
 #instruments #clarinet {
   background: #26c6da;
-  color: #ef5350;
 }
 
 #instruments #perc-organ {
   background: #26a69a;
-  color: #ec407a;
 }
 #instruments #harp {
   background: #66bb6a;
-  color: #ab47bc;
 }
 #instruments #ocarina {
   background: #9ccc65;
-  color: #7e57c2;
 }
 #instruments #music-box {
   background: #d4e157;
-  color: #5c6bc0;
 }
 
 #instruments #square {
   background: #ffee58;
-  color: #29b6f6;
 }
 #instruments #saw {
   background: #ffca28;
-  color: #42a5f5;
 }
 #instruments #synth-bass {
   background: #ffa726;
-  color: #26c6da;
 }
 #instruments #drums {
   background: #ff7043;
-  color: #26a69a;
 }

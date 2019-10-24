@@ -81,7 +81,7 @@
     <script src="frontend/js/index.js" defer></script>
   </head>
   <body>
-    <div id="wrapper">
+    <div id="main">
       <div id="i-wrapper">
         <ul id="instruments">
           <li data-channel="0" id="piano">Piano</li>
@@ -105,7 +105,12 @@
           <li data-channel="15" id="drums">Drums</li>
         </ul>
       </div>
+      <div id="looper">
+        <div id="cursor"></div>
+      </div>
+    </div>
 
+    <div id="side">
       <div id="sidebar">
         <form id="create-form">
           <div class="form-entry">
@@ -116,9 +121,7 @@
         </form>
         <ul id="loops"></ul>
       </div>
-      <div id="looper">
-        <div id="cursor"></div>
-      </div>
+
       <div id="controls">
         <p>Octave <span id="octave">0</span></p>
         <p>Volume <span id="volume">0</span></p>
