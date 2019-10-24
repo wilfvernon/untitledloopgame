@@ -82,27 +82,29 @@
   </head>
   <body>
     <div id="wrapper">
-      <ul id="instruments">
-        <li data-channel="0" id="piano">Piano</li>
-        <li data-channel="1" id="acoustic-guitar">A. Guitar</li>
-        <li data-channel="2" id="acoustic-bass">A. Bass</li>
-        <li data-channel="3" id="electric-bass">E. Bass</li>
+      <div id="i-wrapper">
+        <ul id="instruments">
+          <li data-channel="0" id="piano">Piano</li>
+          <li data-channel="1" id="acoustic-guitar">A. Guitar</li>
+          <li data-channel="2" id="acoustic-bass">A. Bass</li>
+          <li data-channel="3" id="electric-bass">E. Bass</li>
 
-        <li data-channel="4" id="electric-piano">E Piano</li>
-        <li data-channel="5" id="violin">Violin</li>
-        <li data-channel="6" id="tuba">Tuba</li>
-        <li data-channel="7" id="clarinet">Clarinet</li>
+          <li data-channel="4" id="electric-piano">E Piano</li>
+          <li data-channel="5" id="violin">Violin</li>
+          <li data-channel="6" id="tuba">Tuba</li>
+          <li data-channel="7" id="clarinet">Clarinet</li>
 
-        <li data-channel="8" id="perc-organ">Perc. Organ</li>
-        <li data-channel="9" id="harp">Harp</li>
-        <li data-channel="10" id="ocarina">Ocarina</li>
-        <li data-channel="11" id="music-box">Music Box</li>
+          <li data-channel="8" id="perc-organ">Perc. Organ</li>
+          <li data-channel="9" id="harp">Harp</li>
+          <li data-channel="10" id="ocarina">Ocarina</li>
+          <li data-channel="11" id="music-box">Music Box</li>
 
-        <li data-channel="12" id="square">Square Lead</li>
-        <li data-channel="13" id="saw">Saw Lead</li>
-        <li data-channel="14" id="synth-bass">Synth Bass</li>
-        <li data-channel="15" id="drums">Drums</li>
-      </ul>
+          <li data-channel="12" id="square">Square Lead</li>
+          <li data-channel="13" id="saw">Saw Lead</li>
+          <li data-channel="14" id="synth-bass">Synth Bass</li>
+          <li data-channel="15" id="drums">Drums</li>
+        </ul>
+      </div>
 
       <div id="sidebar">
         <form id="create-form">
@@ -118,6 +120,8 @@
         <div id="cursor"></div>
       </div>
       <div id="controls">
+        <p>Octave <span id="octave">0</span></p>
+        <p>Volume <span id="volume">0</span></p>
         <button id="record-btn">Record</button>
         <button id="undo-btn">Undo Last Recording</button>
         <button id="metro">Metronome Off</button>

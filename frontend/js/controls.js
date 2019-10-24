@@ -2,6 +2,7 @@ const controls = document.querySelector("#controls");
 const undoBtn = controls.querySelector("#undo-btn");
 const updateFormElement = document.querySelector("#update-form");
 const updateFormInputs = updateFormElement.querySelectorAll("input");
+const volumeKnob = document.querySelector("#volume");
 
 function startRecording() {
   isRecording = true;
@@ -77,4 +78,16 @@ updateFormElement.addEventListener("submit", e => {
       beatIndex = 0;
       startLooper();
     });
+});
+
+document.body.addEventListener("mousewheel", e => {
+  volume += parseInt(e.deltaY);
+
+  if (volume > 512) {
+    volume = 512;
+  }
+  if (volume < 0) {
+    volume = 0;
+  }
+  volumeKnob.innerText = parseInt((volume * 100) / 512);
 });
