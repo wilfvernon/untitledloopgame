@@ -112,26 +112,34 @@
 
     <div id="side">
       <div id="sidebar">
+        <div id="title">
+          <img src="frontend/loopgame.png" alt="Untitled Goose Game" />
+
+          <h1>
+            Untitled Loop Game
+          </h1>
+        </div>
+
         <form id="create-form">
-          <div class="form-entry">
-            <label for="name">NAME</label>
-            <input style="width: 100%" type="text" name="name" />
-          </div>
-          <button>New</button>
+          <input type="text" name="name" placeholder="New Beat" />
+          <button>+</button>
         </form>
         <ul id="loops"></ul>
       </div>
 
       <div id="controls">
-        <div> 
+        <div>
           <button class="octave-btn">-</button>
-          <span class="tooltip">Octave
-            <span class="tooltiptextabove">Hit 'Shift' to go up. Hit 'Ctrl' to go down.</span>
+          <span class="tooltip"
+            >Octave
+            <span class="tooltiptextabove"
+              >Hit 'Shift' to go up. Hit 'Ctrl' to go down.</span
+            >
           </span>
           <span id="octave">0</span>
           <button class="octave-btn">+</button>
         </div>
-        <p class="tooltip">Volume <span  id="volume">0</span></p>
+        <p class="tooltip">Volume <span id="volume">0</span></p>
         <button id="record-btn">Record</button>
         <button id="undo-btn">Undo Last Recording</button>
         <button id="metro">Metronome Off</button>
