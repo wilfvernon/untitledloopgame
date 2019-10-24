@@ -132,7 +132,7 @@ const cIDtoColor = [
   "#66bb6a",
   "#9ccc65",
   "#d4e157",
-  "#d4e157",
+  "#ffee58",
   "#ffca28",
   "#ffa726",
   "#ff7043"

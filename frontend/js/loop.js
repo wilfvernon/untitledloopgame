@@ -71,3 +71,7 @@ function createLoop(loop) {
 
   loops.appendChild(li);
 }
+
+function resetSidebar() {
+  loops.innerHTML = "";
+}

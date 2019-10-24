@@ -156,26 +156,6 @@ function endNote(noteKey, input) {
   }
 }
 
-document.body.addEventListener("mousewheel", e => {
-  // delay += +e.deltaY / 1000;
-  // if (delay > 5) {
-  //   delay = 5;
-  // }
-  // if (delay < 0.2) {
-  //   delay = 0.2;
-  // }
-
-  volume += parseInt(e.deltaY);
-
-  if (volume > 512) {
-    volume = 512;
-  }
-  if (volume < 32) {
-    volume = 32;
-  }
-  console.log(volume);
-});
-
 // function renderNote(cID, noteKey, velocity, volume, delay) {
 //   const note = createNote(cID, noteKey, velocity, volume, delay);
 //   playNotes([note]);
