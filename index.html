@@ -143,7 +143,7 @@
         </div>
         <div id="volume-div" class="tooltip">
           <span
-            >Input Volume
+            >Rec Level
             <span id="volume">50</span>
           </span>
           <div class="slidecontainer">
@@ -157,6 +157,22 @@
             />
           </div>
         </div>
+        <div id="velocity-div" class="tooltip">
+            <span
+              >Rec Level
+              <span id="velocity">50</span>
+            </span>
+            <div class="slidecontainer">
+              <input
+                type="range"
+                min="0"
+                max="512"
+                value="256"
+                class="slider"
+                id="velocity-slider"
+              />
+            </div>
+          </div>
         <button id="record-btn">Record</button>
         <button id="undo-btn">Undo Last Recording</button>
         <button id="metro">Metronome Off</button>
