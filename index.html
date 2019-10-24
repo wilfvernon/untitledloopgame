@@ -112,25 +112,32 @@
 
     <div id="side">
       <div id="sidebar">
+        <div id="title">
+          <img src="frontend/loopgame.png" alt="Untitled Goose Game" />
+
+          <h1>
+            Untitled Loop Game
+          </h1>
+        </div>
+
         <form id="create-form">
-          <div class="form-entry">
-            <label for="name">NAME</label>
-            <input style="width: 100%" type="text" name="name" />
-          </div>
-          <button>New</button>
+          <input type="text" name="name" placeholder="New Beat" />
+          <button>+</button>
         </form>
         <ul id="loops"></ul>
       </div>
 
       <div id="controls">
-        <div id="octave-controls"> 
-          <button class="tooltip" class="octave-btn">-
-              <span class="tooltiptextabove">Octave Down 'Ctrl'</span>
+        <div id="octave-controls">
+          <button class="tooltip" class="octave-btn">
+            -
+            <span class="tooltiptextabove">Octave Down 'Ctrl'</span>
           </button>
           <span>Octave</span>
           <span id="octave">0</span>
-          <button class="tooltip" class="octave-btn">+
-              <span class="tooltiptextabove">Octave Up 'Shift'</span>
+          <button class="tooltip" class="octave-btn">
+            +
+            <span class="tooltiptextabove">Octave Up 'Shift'</span>
           </button>
         </div>
         <div class="tooltip">
