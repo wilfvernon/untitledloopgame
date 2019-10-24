@@ -1,4 +1,4 @@
-let currentOctave = 0
+let currentOctave = 0;
 
 const notesByKey = {
   z: 36,
@@ -26,20 +26,20 @@ const notesByKey = {
   "[": 57,
   "=": 58,
   "]": 59,
-"\\": 60
+  "\\": 60
 };
 
-function octaveUp(){
-  currentOctave++
-  for (const note in notesByKey){
-    notesByKey[note]+= 12
+function octaveUp() {
+  currentOctave++;
+  for (const note in notesByKey) {
+    notesByKey[note] += 12;
   }
 }
 
-function octaveDown(){
-  currentOctave--
-  for (const note in notesByKey){
-    notesByKey[note]-= 12
+function octaveDown() {
+  currentOctave--;
+  for (const note in notesByKey) {
+    notesByKey[note] -= 12;
   }
 }
 
@@ -116,7 +116,8 @@ document.body.addEventListener("keydown", e => {
     if (notesByKey[e.key]) {
       startNote(cID, notesByKey[e.key], velocity, volume, e.key);
     }
-}});
+  }
+});
 
 document.body.addEventListener("keyup", e => {
   if (notesByKey[e.key]) {

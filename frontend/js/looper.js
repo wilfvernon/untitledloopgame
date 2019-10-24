@@ -64,7 +64,7 @@ function resetMajorTicks(bars) {
 
   looper.innerHTML = "<div id='cursor'></div>";
 
-  for (let i = 0; i < bars; i++) {
+  for (let i = 1; i < bars; i++) {
     const tick = document.createElement("div");
     tick.style = `height: 30vh;
     width: 2px;
@@ -94,14 +94,14 @@ function renderNote(note, index) {
   const tick = document.createElement("div");
 
   tick.style = `
-              height: 1vh;
+              height: 4px;
               width: ${width}vw;
               background: ${cIDtoColor[note.cID]};
               position: absolute;
-              border: 2px solid black;
+              border: 1px solid black;
               border-radius: 5px;
               left: ${index * (70 / currentLoop.notes.length)}vw;
-              bottom: ${note.note_key - 32}vh;
+              bottom: ${((note.note_key - 24) / 72) * 27.5 + 0.5}vh;
               `;
   looper.append(tick);
 }

@@ -1,6 +1,8 @@
 #looper {
-  background: linear-gradient(thistle, oldlace);
+  background: #ebebeb;
   height: 30vh;
+  box-shadow: inset 2px 0px 9px #00000044;
+  border-right: #bdbdbd solid 1px;
 }
 
 #cursor {
