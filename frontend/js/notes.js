@@ -1,22 +1,47 @@
+let currentOctave = 0
+
 const notesByKey = {
-  q: 35,
-  w: 36,
-  e: 38,
-  r: 40,
-  t: 41,
-  y: 43,
-  u: 45,
-  i: 47,
-  o: 48,
-  a: 48,
-  s: 50,
-  d: 52,
-  f: 53,
-  g: 55,
-  h: 57,
-  j: 59,
-  k: 60
+  z: 36,
+  s: 37,
+  x: 38,
+  d: 39,
+  c: 40,
+  v: 41,
+  g: 42,
+  b: 43,
+  h: 44,
+  n: 45,
+  j: 46,
+  m: 47,
+  ",": 48,
+  y: 48,
+  7: 49,
+  u: 50,
+  8: 51,
+  i: 52,
+  o: 53,
+  0: 54,
+  p: 55,
+  "-": 56,
+  "[": 57,
+  "=": 58,
+  "]": 59,
+"\\": 60
 };
+
+function octaveUp(){
+  currentOctave++
+  for (const note in notesByKey){
+    notesByKey[note]+= 12
+  }
+}
+
+function octaveDown(){
+  currentOctave--
+  for (const note in notesByKey){
+    notesByKey[note]-= 12
+  }
+}
 
 function createNote(cID, note_key, velocity, volume, delay, recordingId) {
   return {
@@ -70,10 +95,21 @@ const timeEvent = {};
 const typingElements = [createFormInput, ...updateFormInputs];
 
 document.body.addEventListener("keydown", e => {
-  if (notesByKey[e.key] && !typingElements.includes(document.activeElement)) {
-    startNote(cID, notesByKey[e.key], velocity, volume, e.key);
-  }
-});
+  if(!typingElements.includes(document.activeElement)){
+    ///Change Octave//
+    if(e.key === "Shift"){
+      octaveUp();
+    }
+
+    if(e.key === "Control"){
+      octaveDown();
+    }
+
+    //Play notes//
+    if (notesByKey[e.key]) {
+      startNote(cID, notesByKey[e.key], velocity, volume, e.key);
+    }
+}});
 
 document.body.addEventListener("keyup", e => {
   if (notesByKey[e.key]) {
