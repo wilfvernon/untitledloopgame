@@ -95,14 +95,21 @@ const timeEvent = {};
 const typingElements = [createFormInput, ...updateFormInputs];
 
 document.body.addEventListener("keydown", e => {
-  if (!typingElements.includes(document.activeElement)) {
+  if(!typingElements.includes(document.activeElement)){
+    const octave = document.querySelector("#octave")
     ///Change Octave//
-    if (e.key === "Shift") {
-      if (currentOctave < 3) octaveUp();
+    if(e.key === "Shift"){
+      if(currentOctave < 3) {
+        octaveUp();
+        octave.innerText = +(octave.innerText)+!!octave + new Array()
+      }
     }
 
-    if (e.key === "Control") {
-      if (currentOctave > -1) octaveDown();
+    if(e.key === "Control"){
+      if(currentOctave > -1) {
+        octaveDown();
+        octave.innerText = +(octave.innerText)-!!octave + new Array();
+      }
     }
 
     //Play notes//
