@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 3rem 5fr;
-  height: 70vh;
+  height: 60vh;
 }
 #sidebar #title {
   display: flex;

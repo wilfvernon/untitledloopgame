@@ -137,66 +137,77 @@
 
       <div id="controls">
         <div id="octave-controls">
-          <button class="tooltip" class="octave-btn">
-            -
-            <span class="tooltiptextabove">Octave Down 'Ctrl'</span>
-          </button>
-          <span>Octave</span>
-          <span id="octave">0</span>
-          <button class="tooltip" class="octave-btn">
-            +
-            <span class="tooltiptextabove">Octave Up 'Shift'</span>
-          </button>
-        </div>
-        <div id="volume-div" class="tooltip">
-          <span
-            >Rec Level
-            <span id="volume">50</span>
-          </span>
-          <div class="slidecontainer">
-            <input
-              type="range"
-              min="0"
-              max="512"
-              value="256"
-              class="slider"
-              id="volume-slider"
-            />
+          <span>Octave <span id="octave">0</span></span>
+
+          <div id="octave-buttons">
+            <button class="tooltip" class="octave-btn">
+              -
+              <span class="tooltiptextabove">Octave Down 'Ctrl'</span>
+            </button>
+
+            <button class="tooltip" class="octave-btn">
+              +
+              <span class="tooltiptextabove">Octave Up 'Shift'</span>
+            </button>
           </div>
         </div>
-        <div id="velocity-div" class="tooltip">
+        <div id="analog-controls">
+          <div id="volume-div" class="tooltip">
             <span
-              >Velocity
-              <span id="velocity">50</span>
+              >Rec Level
+              <span id="volume">50</span>
             </span>
-            <div class="slidecontainer">
+            <div id="volslide" class="slidecontainer">
               <input
                 type="range"
                 min="0"
                 max="512"
                 value="256"
                 class="slider"
+                id="volume-slider"
+              />
+            </div>
+          </div>
+          <div id="velocity-div" class="tooltip">
+            <span
+              >Velocity
+              <span id="velocity">25</span>
+            </span>
+            <div id="velslide" class="slidecontainer">
+              <input
+                type="range"
+                min="0"
+                max="63"
+                value="31"
+                class="slider"
                 id="velocity-slider"
               />
             </div>
           </div>
-        <button id="record-btn">Record</button>
-        <button id="undo-btn">Undo Last Recording</button>
-        <button id="metro">Metronome Off</button>
+        </div>
+        <div id="digital-buttons">
+          <div>
+            <button id="record-btn">Record</button>
+            <button id="undo-btn">Undo</button>
+          </div>
+          <button id="metro">Metronome</button>
+        </div>
         <form id="update-form">
-          <div class="form-entry">
-            <label for="name">NAME</label>
-            <input type="text" name="name" />
+          <div id="update-entry-div">
+            <div class="form-entry">
+              <label for="name">NAME</label>
+              <input type="text" name="name" />
+            </div>
+            <div class="form-entry">
+              <label for="BPM">BPM</label>
+              <input type="number" name="BPM" />
+            </div>
+            <div class="form-entry">
+              <label for="bars">BARS</label>
+              <input type="number" name="bars" />
+            </div>
           </div>
-          <div class="form-entry">
-            <label for="BPM">BPM</label>
-            <input type="number" name="BPM" />
-          </div>
-          <div class="form-entry">
-            <label for="bars">BARS</label>
-            <input type="number" name="bars" />
-          </div>
-          <button>Save</button>
+          <button>+</button>
         </form>
       </div>
     </div>
