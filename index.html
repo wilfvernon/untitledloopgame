@@ -120,8 +120,9 @@
           </h1>
         </div>
 
-        <form id="create-form">
+        <form id="create-form" class="tooltip">
           <input type="text" name="name" placeholder="New Beat" />
+          <span class="tooltiptextform">Enter Text</span>
           <button>+</button>
         </form>
         <ul id="loops"></ul>
@@ -140,12 +141,13 @@
             <span class="tooltiptextabove">Octave Up 'Shift'</span>
           </button>
         </div>
-        <div class="tooltip">
+        <div id="volume-controls">
           <span>Input Volume 
             <span  id="volume">50</span>
           </span>
-          <div class="slidecontainer">
+          <div class="tooltip" class="slidecontainer" >
             <input type="range" min="0" max="512" value="256" class="slider" id="volume-slider">
+            <span class="tooltiptextabove">Volume 'Scroll'</span>
           </div>
         </div>
         <button id="record-btn">Record</button>
