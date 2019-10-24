@@ -30,16 +30,22 @@ const notesByKey = {
 };
 
 function octaveUp() {
-  currentOctave++;
-  for (const note in notesByKey) {
-    notesByKey[note] += 12;
+  if (currentOctave < 3) {
+    currentOctave++;
+    for (const note in notesByKey) {
+      notesByKey[note] += 12;
+    }
+    octave.innerText = +octave.innerText + !!octave + new Array();
   }
 }
 
 function octaveDown() {
-  currentOctave--;
-  for (const note in notesByKey) {
-    notesByKey[note] -= 12;
+  if (currentOctave > -1) {
+    currentOctave--;
+    for (const note in notesByKey) {
+      notesByKey[note] -= 12;
+    }
+    octave.innerText = +octave.innerText - !!octave + new Array();
   }
 }
 
@@ -99,17 +105,11 @@ document.body.addEventListener("keydown", e => {
     const octave = document.querySelector("#octave");
     ///Change Octave//
     if (e.key === "Shift") {
-      if (currentOctave < 3) {
-        octaveUp();
-        octave.innerText = +octave.innerText + !!octave + new Array();
-      }
+      octaveUp();
     }
 
     if (e.key === "Control") {
-      if (currentOctave > -1) {
-        octaveDown();
-        octave.innerText = +octave.innerText - !!octave + new Array();
-      }
+      octaveDown();
     }
 
     //Play notes//
@@ -169,3 +169,9 @@ function endNote(noteKey, input) {
 //   playNotes([note]);
 //   //saveNote(note);
 // }
+
+const octaveDownBtn = document.querySelector("#octave-down");
+const octaveUpBtn = document.querySelector("#octave-up");
+
+octaveDownBtn.addEventListener("click", octaveDown);
+octaveUpBtn.addEventListener("click", octaveUp);

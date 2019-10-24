@@ -6,6 +6,7 @@ const volumeKnob = document.querySelector("#volume");
 const volumeSlider = document.querySelector("#volume-slider");
 const velocityKnob = document.querySelector("#velocity");
 const velocitySlider = document.querySelector("#velocity-slider");
+
 volumeSlider.value = volume;
 velocitySlider.value = velocity;
 

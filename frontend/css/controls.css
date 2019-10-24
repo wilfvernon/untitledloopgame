@@ -166,7 +166,10 @@
   opacity: 0.7;
 }
 
-#octave-buttons button:hover {
+#octave-up:hover {
+  opacity: 1;
+}
+#octave-down:hover {
   opacity: 1;
 }
 

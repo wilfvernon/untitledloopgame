@@ -65,4 +65,45 @@ const honks = [
 ];
 honker.addEventListener("click", e => {
   honks[Math.floor(Math.random() * honks.length)].play();
+
+  const span = document.createElement("span");
+
+  span.style = `
+    color: white;
+    font-size: 0rem;
+    position: absolute;
+    user-select:none;
+    left: 75vw;
+    top: 3vw;
+    z-index: 1;
+    	-webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #00000022;`;
+  span.innerText = "honk";
+  document.body.append(span);
+
+  let i = 0;
+  let size = 0;
+  let x = (Math.random() * 6 - 3) * 5;
+  if (x < 1 && x > -1) {
+    x = 8;
+  }
+  let y = (Math.random() * 6 - 3) * 5;
+  if (y < 5 && y > -5) {
+    y = 8;
+  }
+  let id = setInterval(e => {
+    if (i === 20) {
+      span.remove();
+      return clearInterval(id);
+    }
+    if (size < 2) {
+      size = 0.1 * i;
+    } else {
+      size = 2;
+    }
+    span.style.fontSize = size + "rem";
+    span.style.top = 4 - (i / 30) * y + "vw";
+    span.style.left = 75 - (i / 30) * x + "vw";
+    i++;
+  }, 10);
 });
