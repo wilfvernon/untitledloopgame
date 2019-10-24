@@ -68,8 +68,8 @@
   0% {
   }
   100% {
-    font-size: 1.7rem;
-    color: white;
+    font-size: 1.75rem;
+    color: rgb(212, 212, 212);
     border-color: rgba(0, 0, 0, 0.4);
   }
 }
