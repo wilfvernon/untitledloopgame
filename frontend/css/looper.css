@@ -1,7 +1,6 @@
 #looper {
-  background: #fff;
   height: 30vh;
-  border-top: 1px solid #bdbdbd10;
+  border-top: #bdbdbd solid 1px;
 }
 
 #cursor {

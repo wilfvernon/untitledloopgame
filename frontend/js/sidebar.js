@@ -25,8 +25,13 @@ createForm.addEventListener("submit", e => {
       startLooper();
 
       createForm.reset();
+      createFormInput.placeholder = "New Beat |";
     })
     .catch(alert);
+});
+
+createFormInput.addEventListener("click", e => {
+  createFormInput.placeholder = "";
 });
 
 loops.addEventListener("click", e => {
