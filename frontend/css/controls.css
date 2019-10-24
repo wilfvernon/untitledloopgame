@@ -12,13 +12,12 @@
 
 .tooltip {
   position: relative;
-  border-bottom: 1px dotted black;
 }
 
 .tooltip .tooltiptextabove {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
-  visibility: hidden;
+  visibility: visible;
   width: 150px;
   background-color: #555;
   color: #fff;
@@ -34,7 +33,13 @@
   transition: opacity 0.3s;
 }
 
-.tooltip .tooltiptextabove::after {
+.tooltip:hover .tooltiptextabove {
+  transition: opacity 0.2s ease 1s;
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip .tooltiptextabove:hover::after {
   content: "";
   position: absolute;
   top: 100%;
@@ -45,10 +50,7 @@
   border-color: #fff transparent transparent transparent;
 }
 
-.tooltip:hover .tooltiptextabove {
-  visibility: visible;
-  opacity: 1;
-}
+
 
 .octave-btn {
   background: #827d82;
@@ -61,11 +63,11 @@
   box-shadow: #555 1px 
 }
 
-@keyframes button-click{
+/* @keyframes button-click{
   0% {
   }
   100% 
-}
+} */
 
 .octave-btn:hover {
   background: #413f41;
