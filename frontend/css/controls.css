@@ -144,6 +144,12 @@
   width: 100%;
   user-select: none;
 }
+#volume-div {
+  width: 40%;
+}
+#velocity-div {
+  width: 40%;
+}
 #octave-controls {
   display: flex;
   flex-direction: column;

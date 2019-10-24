@@ -120,5 +120,5 @@ volumeSlider.oninput = function() {
 };
 velocitySlider.oninput = function() {
   velocity = +this.value;
-  velocitySlider.innerText = parseInt((velocity * 100) / 512);
+  velocityKnob.innerText = parseInt((velocity * 100) / 127);
 };
