@@ -1,11 +1,8 @@
 .modal {
-  overflow: auto;
-  position: fixed;
+  position: absolute;
   z-index: 5;
-  left: 0;
-  top: -10;
-  width: 100%;
-  height: 100%;
+  width: 200vw;
+  height: 100vh;
   background-color: #3f51b5;
 }
 
@@ -110,5 +107,28 @@
     height: 0px;
     border-radius: 100rem;
     display: none;
+  }
+}
+
+#modal-btn {
+  color: white;
+  position: absolute;
+  font-size: 7rem;
+  left: 95vw;
+  top: 45vh;
+  user-select: none;
+  cursor: pointer;
+}
+
+.divide-animate {
+  transform: translate(-100vw, 0px);
+  transition: 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes divide-animation {
+  0% {
+  }
+  100% {
+    left: -100vw;
   }
 }

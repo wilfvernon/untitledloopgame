@@ -11,9 +11,6 @@ const duck = document.querySelector("#modal-logo");
 let currentLoop = null;
 let currentRecording = null;
 
-modal.onclick = function() {
-  // modal.style.display = "none";
-};
 duck.onclick = function() {
   honks[Math.floor(Math.random() * honks.length)].play();
   modal.className = "modal modal-animate";
@@ -30,7 +27,7 @@ duck.onclick = function() {
 function fadeOut() {
   let vol_i = 0.05;
   const vol = setInterval(() => {
-    vol_i -= 0.0001;
+    vol_i -= 0.001;
     if (vol_i < 0) {
       vol_i = 0;
       intro.pause();
@@ -43,7 +40,7 @@ function fadeOut() {
 function fadeIn() {
   let vol_i = 0;
   const vol = setInterval(() => {
-    vol_i += 0.0001;
+    vol_i += 0.001;
     if (vol_i > 0.05) {
       vol_i = 0.05;
       clearInterval(vol);

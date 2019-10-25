@@ -135,17 +135,17 @@ function playNote(note) {
   MIDI.noteOff(note.cID, note.note_key, note.delay);
 }
 
-function startNote(cID, noteKey, velocity, volume, keyInput) {
+function startNote(cID, noteKey, vel, volume, keyInput) {
   if (!timeEvent[keyInput]) {
     timeEvent[keyInput] = { time: Date.now(), cID: cID, index: beatIndex };
     MIDI.setVolume(cID, volume);
-    MIDI.noteOn(cID, noteKey, velocity, 0);
+    MIDI.noteOn(cID, noteKey, vel, 0);
   }
 }
 
 let isRecording = false;
 
-function endNote(noteKey, input) {
+function endNote(noteKey, input, vel = velocity) {
   if (timeEvent[input]) {
     MIDI.noteOff(timeEvent[input].cID, noteKey, 0);
     delay = (Date.now() - timeEvent[input].time) / 1000.0;
@@ -153,7 +153,7 @@ function endNote(noteKey, input) {
       const note = createNote(
         timeEvent[input].cID,
         noteKey,
-        velocity,
+        vel,
         volume,
         delay,
         currentRecording.id
@@ -185,12 +185,11 @@ navigator.requestMIDIAccess().then(function(access) {
 });
 
 function onMIDIMessage(event) {
-  console.log(event.data);
-
   if (event.data[0] === 144)
     startNote(cID, event.data[1], event.data[2], volume, event.data[1]);
 
-  if (event.data[0] === 128) endNote(event.data[1], event.data[1]);
+  if (event.data[0] === 128)
+    endNote(event.data[1], event.data[1], event.data[2]);
 }
 
 function startLoggingMIDIInput(access, indexOfPort) {

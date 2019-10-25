@@ -6,9 +6,9 @@ class Note < ApplicationRecord
   private
 
   def default_values
-    self.delay ||= 0
-    self.velocity ||= 63
-    self.volume ||= 127
+    self.delay = self.delay ||= 0
+    self.velocity = self.velocity ||= 63
+    self.volume = self.volume ||= 127
     self.save
   end
 end

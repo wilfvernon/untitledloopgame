@@ -52,7 +52,8 @@ controls.addEventListener("click", e => {
       e.target.style = "opacity: 1; background: red";
       startRecording();
     }
-  } else if (e.target.id === "undo-btn") undoLastRecording();
+  }
+  if (e.target.id === "undo-btn") undoLastRecording();
 });
 
 updateFormElement.addEventListener("submit", e => {

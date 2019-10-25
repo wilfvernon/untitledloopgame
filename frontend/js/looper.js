@@ -29,12 +29,12 @@ function startTickLoop() {
     if (metronome && beatIndex % currentLoop.beatsPerBar === 0) {
       const note = {
         cID: 11,
-        volume: 127,
+        volume: 500,
         note_key: 70,
         velocity: 16,
         delay: 0.1
       };
-      if (beatIndex == 128) note.note_key = 80;
+      if (beatIndex === currentLoop.notes.length) note.note_key = 80;
       playNote(note);
     }
     if (beatIndex >= currentLoop.notes.length) {
@@ -101,7 +101,7 @@ function renderNote(note, index) {
               border: 1px solid black;
               border-radius: 5px;
               left: ${index * (70 / currentLoop.notes.length)}vw;
-              bottom: ${((note.note_key - 24) / 72) * 27.5 + 0.5}vh;
+              bottom: ${((note.note_key - 10) / 105) * 27.5 + 0.1}vh;
               `;
   looper.append(tick);
 }
