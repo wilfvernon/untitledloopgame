@@ -16,10 +16,6 @@ window.onload = function() {
     "lead_2_sawtooth",
     "synth_bass_1",
     "synth_drum"
-    // "choir_aahs",
-    // "banjo",C
-    // "dulcimer",
-    // "fx_6_goblins"
   ];
 
   MIDI.loadPlugin({
