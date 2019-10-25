@@ -5,11 +5,52 @@ const LOOPS_URL = BASE_URL + `/loops`;
 const LOOP_URL = id => LOOPS_URL + "/" + id;
 const RECORDINGS_URL = BASE_URL + `/recordings`;
 const RECORDING_URL = id => RECORDINGS_URL + "/" + id;
+const modal = document.querySelector(".modal");
+const duck = document.querySelector("#modal-logo");
+
 let currentLoop = null;
 let currentRecording = null;
-let modal = document.querySelector(".modal")
+
 modal.onclick = function() {
-  modal.style.display = "none";
+  // modal.style.display = "none";
+};
+duck.onclick = function() {
+  honks[Math.floor(Math.random() * honks.length)].play();
+  modal.className = "modal modal-animate";
+
+  fadeOut();
+
+  setTimeout(e => {
+    modal.style.display = "none";
+    startLooper();
+    modal.className = "modal";
+  }, 1000);
+};
+
+function fadeOut() {
+  let vol_i = 1;
+  const vol = setInterval(() => {
+    vol_i -= 0.08;
+    if (vol_i < 0) {
+      vol_i = 0;
+      intro.pause();
+      clearInterval(vol);
+    }
+    intro.volume = vol_i;
+  }, 100);
+}
+
+function fadeIn() {
+  let vol_i = 0;
+  const vol = setInterval(() => {
+    vol_i += 0.08;
+    if (vol_i > 1) {
+      vol_i = 1;
+      clearInterval(vol);
+      modal.className = "modal";
+    }
+    intro.volume = vol_i;
+  }, 100);
 }
 
 Recording.getLastRecordingId();
@@ -20,3 +61,13 @@ fetch(LOOPS_URL)
     e.forEach(createLoop);
   })
   .catch(console.log);
+
+const title = document.querySelector("#title > h1");
+title.addEventListener("click", e => {
+  honks[Math.floor(Math.random() * honks.length)].play();
+  modal.style.display = "block";
+  stopLooper();
+  fadeIn();
+  modal.className = "modal modal-animate-reverse";
+  intro.play();
+});

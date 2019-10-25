@@ -30,6 +30,7 @@ window.onload = function() {
         MIDI.programChange(i, MIDI.GM.byName[instrumentsName[i]].number);
       }
       startLooper();
+      stopLooper();
     }
   });
 };
