@@ -28,9 +28,9 @@ duck.onclick = function() {
 };
 
 function fadeOut() {
-  let vol_i = 1;
+  let vol_i = 0.05;
   const vol = setInterval(() => {
-    vol_i -= 0.08;
+    vol_i -= 0.0001;
     if (vol_i < 0) {
       vol_i = 0;
       intro.pause();
@@ -43,9 +43,9 @@ function fadeOut() {
 function fadeIn() {
   let vol_i = 0;
   const vol = setInterval(() => {
-    vol_i += 0.08;
-    if (vol_i > 1) {
-      vol_i = 1;
+    vol_i += 0.0001;
+    if (vol_i > 0.05) {
+      vol_i = 0.05;
       clearInterval(vol);
       modal.className = "modal";
     }

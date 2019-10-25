@@ -29,6 +29,7 @@ const notesByKey = {
   "\\": 60
 };
 
+
 function octaveUp() {
   if (currentOctave < 3) {
     currentOctave++;
@@ -164,6 +165,7 @@ function endNote(noteKey, input) {
   }
 }
 
+
 // function renderNote(cID, noteKey, velocity, volume, delay) {
 //   const note = createNote(cID, noteKey, velocity, volume, delay);
 //   playNotes([note]);
@@ -175,3 +177,26 @@ const octaveUpBtn = document.querySelector("#octave-up");
 
 octaveDownBtn.addEventListener("click", octaveDown);
 octaveUpBtn.addEventListener("click", octaveUp);
+
+let midi;
+
+navigator.requestMIDIAccess()
+    .then(function(access) {
+    ([...access.inputs.values()][0]).open().then(e=>{
+        startLoggingMIDIInput(access, 480543358)
+    })
+    })
+
+function onMIDIMessage(event){
+    console.log(event.data)
+    
+    if(event.data[0] === 144)
+    startNote(cID, event.data[1], event.data[2], volume, event.data[0]);
+
+    if(event.data[0] === 128)
+    endNote(event.data[1], event.data[0]);
+}
+
+function startLoggingMIDIInput(access, indexOfPort){
+    access.inputs.forEach(entry => entry.onmidimessage = onMIDIMessage)
+}
